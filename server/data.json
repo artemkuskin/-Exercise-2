@@ -1,0 +1,1724 @@
+{
+    "version": "0.0.16",
+    "menu": [{
+            "name": "Овощной",
+            "id": "1",
+            "description": "Соус и овощи на выбор",
+            "image": "../i/sandwiches/ovoshnoy.png",
+            "price": 105,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "whit-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Индейка",
+            "id": "2",
+            "description": "Сэндвич с индейкой, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/ind.png",
+            "price": 130,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Ветчина",
+            "id": "3",
+            "description": "Сэндвич с ветчиной, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/vetchina.png",
+            "price": 130,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Индейка и ветчина",
+            "id": "4",
+            "description": "Сендвич с индейкой и ветчиной, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/indandvet.png",
+            "price": 130,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Морепродукты",
+            "id": "5",
+            "description": "Сэндвич с крабовым мясом, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/moreprodukty.png",
+            "price": 130,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Тунец",
+            "id": "6",
+            "description": "Сэндвич с филе тунца, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/tune.png",
+            "price": 150,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Острый итальянский",
+            "id": "7",
+            "description": "Сэндвич с салями и пепперони, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/ostitaliansky.png",
+            "price": 150,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Б.М.Т.",
+            "id": "8",
+            "description": "Ветчина, салями, пепперони, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/bmt.png",
+            "price": 150,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Куриная грудка",
+            "id": "9",
+            "description": "Куриное филе, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/kurgrud.png",
+            "price": 150,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Ростбиф",
+            "id": "10",
+            "description": "Сэндвич с говядиной, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/rostbif.png",
+            "price": 165,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Мелт",
+            "id": "11",
+            "description": "Индейка, ветчина, бекон, соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/malt.png",
+            "price": 165,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Курица бекон",
+            "id": "12",
+            "description": "Куриное филе с беконом. Соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/kurbeckon.png",
+            "price": 165,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Террияки",
+            "id": "13",
+            "description": "Куриное филе в кисло-сладком соусе. Соус и овощи на выбор",
+            "image": "/home/user/HomeWork/i/sandwiches/teriaki.png",
+            "price": 165,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Биф Клаб",
+            "id": "14",
+            "description": "С котлетой из курицы и говядины",
+            "image": "/home/user/HomeWork/i/sandwiches/beef-club.png",
+            "price": 150,
+            "category": "sandwiches",
+            "market": "subway",
+            "type": "multiple",
+            "weight": 1,
+            "components": {
+                "size": "1x",
+                "bread": "white-italian",
+                "vegetable": [],
+                "sauce": [],
+                "filling": []
+            }
+        },
+        {
+            "name": "Доп сыр (в бургер)",
+            "id": "15",
+            "description": "Дополнительная порция сыра в любой бургер",
+            "image": "/home/user/HomeWork/i/ingredients/products/cheese.png",
+            "price": 15,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "ФишБургер",
+            "id": "16",
+            "description": "Рыбная котлета с сыром и соусом тар-тар",
+            "image": "/home/user/HomeWork/i/burgers/fish2.png",
+            "price": 120,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Королевский бургер",
+            "id": "17",
+            "description": "Говядина, бекон, куриное филе, сыр, салат, овощи",
+            "image": "/home/user/HomeWork/i/burgers/kingburger.png",
+            "price": 230,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Дарт Вейдер",
+            "id": "18",
+            "description": "С большой говяжей котлетой, сыром, салатом",
+            "image": "/home/user/HomeWork/i/burgers/darthvader.png",
+            "price": 199,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Деревенский",
+            "id": "19",
+            "description": "Со свиной котлетой, беконом, драником и салатом",
+            "image": "/home/user/HomeWork/i/burgers/derevenskiy.png",
+            "price": 129,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Имперский",
+            "id": "20",
+            "description": "С куриным филе, картофельным драником, сыром, салатом",
+            "image": "/home/user/HomeWork/i/burgers/imperial.png",
+            "price": 149,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Вестерн",
+            "id": "21",
+            "description": "Со свиной котлетой, луковыми кольцами и соусом чипотл",
+            "image": "/home/user/HomeWork/i/burgers/western.png",
+            "price": 119,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Премиум",
+            "id": "22",
+            "description": "Говядина, салат, соленый огурец, помидор, лук",
+            "image": "/home/user/HomeWork/i/burgers/premium.png",
+            "price": 140,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Двойной премиум",
+            "id": "23",
+            "description": "Такой же, как Премиум, но с 2",
+            "image": "/home/user/HomeWork/i/burgers/dublepremium.png",
+            "price": 179,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Пикантный бургер",
+            "id": "24",
+            "description": "куриная котлета, салат, лук, сол. огурец, сыр и медовая горчица",
+            "image": "/home/user/HomeWork/i/burgers/spisy.png",
+            "price": 140,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чизбургер с беконом",
+            "id": "25",
+            "description": "С говядиной, беконом, луком, сыром и огурцами",
+            "image": "/home/user/HomeWork/i/burgers/cheeseburger-with-bacon.png",
+            "price": 105,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "С куриным филе",
+            "id": "26",
+            "description": "С фирменным куриным филе, майонезом и салатом",
+            "image": "/home/user/HomeWork/i/burgers/burgerskurinymfile.png",
+            "price": 98,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Со жгучим куриным филе",
+            "id": "27",
+            "description": "С фирменным ОСТРЫМ куриным филе, майонезом и салатом",
+            "image": "/home/user/HomeWork/i/burgers/burgersojguchimfile.png",
+            "price": 104,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Сырный бургер с беконом",
+            "id": "28",
+            "description": "С куриным филе и беконом, сыром, майонезом и салатом",
+            "image": "/home/user/HomeWork/i/burgers/cheeseburgersbekonom.png",
+            "price": 145,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Слоппи джо",
+            "id": "29",
+            "description": "С куриным филе в соусе BBQ, салатом и майонезом",
+            "image": "/home/user/HomeWork/i/burgers/sloppyjo.png",
+            "price": 132,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Пири-пири Бургер",
+            "id": "30",
+            "description": "С острым куриным филе",
+            "image": "/home/user/HomeWork/i/burgers/burgerskurinymfile.png",
+            "price": 129,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чизбургер",
+            "id": "31",
+            "description": "С говяжей котлетой, кетчупом и сыром, без овощей",
+            "image": "/home/user/HomeWork/i/burgers/cheesburger.png",
+            "price": 69,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Гамбургер",
+            "id": "32",
+            "description": "Бургер с говяжей котлетой и кетчупом, но без овощей",
+            "image": "/home/user/HomeWork/i/burgers/gamburger.png",
+            "price": 59,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чикенбург",
+            "id": "33",
+            "description": "Бургер с куриной котлетой в панировке",
+            "image": "/home/user/HomeWork/i/burgers/chikenburger.png",
+            "price": 72,
+            "category": "burgers",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Кубит",
+            "id": "34",
+            "description": "С куриным филе и картофельным драником",
+            "image": "/home/user/HomeWork/i/salads/kubit.png",
+            "price": 155,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Ролл с креветкой (3шт)",
+            "id": "35",
+            "description": "Ролл с креветкой в панировке и соусом тар-тар",
+            "image": "/home/user/HomeWork/i/salads/tortiliya.png",
+            "price": 160,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Овощной салат",
+            "id": "36",
+            "description": "Вегетарианский салат (можно в пост)",
+            "image": "/home/user/HomeWork/i/salads/vegasalad.png",
+            "price": 95,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Кусок фирменной курицы",
+            "id": "37",
+            "description": "1 кусочек курицы в фирменной панировке SFC",
+            "image": "/home/user/HomeWork/i/chicken/kusok-kuricy.png",
+            "price": 68,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чикен барбекю",
+            "id": "38",
+            "description": "Куриный шашлычок на шпажке с болгарским перцем и луком",
+            "image": "/home/user/HomeWork/i/chicken/chiken-barbequ.png",
+            "price": 99,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чикен стрипс",
+            "id": "39",
+            "description": "6 кусочков фирменного филе",
+            "image": "/home/user/HomeWork/i/chicken/chiken-strips.png",
+            "price": 154,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чикен террияки байтс",
+            "id": "40",
+            "description": "6 кусочков филе в соусе террияки с салатом и кунжутом",
+            "image": "/home/user/HomeWork/i/salads/teriaki.png",
+            "price": 137,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Пири-пири вингс",
+            "id": "41",
+            "description": "Пара крыльев в фирменной панировке пири-пири",
+            "image": "/home/user/HomeWork/i/chicken/2bolshih-kryla.png",
+            "price": 110,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Куриная лапша",
+            "id": "42",
+            "description": "На курином бульоне с домашней лапшой",
+            "image": "/home/user/HomeWork/i/chicken/kursup.png",
+            "price": 80,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "  6 Острых   крылышек Hot'n'Flakey",
+            "id": "43",
+            "description": "6 шт в острой фирменной панировке",
+            "image": "/home/user/HomeWork/i/chicken/6ostryh-krylishek.png",
+            "price": 185,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "12 Острых крылышек Hot'n'Flakey",
+            "id": "44",
+            "description": "12 шт в острой фирменной панировке",
+            "image": "/home/user/HomeWork/i/chicken/6ostryh-krylishek.png",
+            "price": 334,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "24 Острых крылышек Hot'n'Flakey",
+            "id": "45",
+            "description": "24 шт в острой фирменной панировке",
+            "image": "/home/user/HomeWork/i/chicken/6ostryh-krylishek.png",
+            "price": 619,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Маленькая картошка",
+            "id": "46",
+            "description": "Стандартная порция на одного",
+            "image": "/home/user/HomeWork/i/chicken/free-mini.png",
+            "price": 49,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Большая картошка",
+            "id": "47",
+            "description": "Большая порция на одного голодного",
+            "image": "/home/user/HomeWork/i/chicken/free.png",
+            "price": 74,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Картошка 'по-английски'",
+            "id": "48",
+            "description": "Крупные дольки молодого картофеля",
+            "image": "/home/user/HomeWork/i/chicken/potatoes-in-english.png",
+            "price": 75,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Картофельные драники",
+            "id": "49",
+            "description": "Треугольные биточки из картофеля",
+            "image": "/home/user/HomeWork/i/dranik.png",
+            "price": 45,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус сырный (порц)",
+            "id": "50",
+            "description": "",
+            "image": "/home/user/HomeWork/i/chicken/sirniy1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус чесночный (порц)",
+            "id": "51",
+            "description": "",
+            "image": "/home/user/HomeWork/i/chicken/chesnochniy1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус карри (порц)",
+            "id": "52",
+            "description": "",
+            "image": "/home/user/HomeWork/i/chicken/curry1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус кисло-сладкий (порц)",
+            "id": "53",
+            "description": "",
+            "image": "/home/user/HomeWork/i/chicken/kislosladkiy2.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус горчичный (порц)",
+            "id": "54",
+            "description": "",
+            "image": "/home/user/HomeWork/i/chicken/gorchichniy1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус сальса (порц)",
+            "id": "55",
+            "description": "островатый",
+            "image": "/home/user/HomeWork/i/chicken/salsa1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус барбекью (порц)",
+            "id": "56",
+            "description": "с дымком",
+            "image": "/home/user/HomeWork/i/chicken/bbq1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Соус томатный кетчуп (порц)",
+            "id": "57",
+            "description": "классический вкус Heinz",
+            "image": "/home/user/HomeWork/i/chicken/tomatniy1.png",
+            "price": 20,
+            "category": "chicken",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Цезарь",
+            "id": "58",
+            "description": "С куриным филе, салатом, сыром Пармезан и сухариками",
+            "image": "/home/user/HomeWork/i/salads/salad.png",
+            "price": 135,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Лукошко",
+            "id": "59",
+            "description": "С куриным филе, жареными грибочками, соленым огурцами и сыром",
+            "image": "/home/user/HomeWork/i/salads/lukoshko.png",
+            "price": 125,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Салат с тунцом",
+            "id": "60",
+            "description": "Тунец с салатом, болгарским перцем, маслинами и кукурузой",
+            "image": "/home/user/HomeWork/i/salads/saladtun.png",
+            "price": 143,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Курица с яблоком и апельсином",
+            "id": "61",
+            "description": "салат, яблоко, апельсин, огурец свежий, куриное филе",
+            "image": "/home/user/HomeWork/i/salads/salad.png",
+            "price": 120,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Курица с грецким орехом и черносливом",
+            "id": "62",
+            "description": "салат, орех, чернослив, куриное филе с чесночным соусом",
+            "image": "/home/user/HomeWork/i/salads/salad.png",
+            "price": 120,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Салат греческий",
+            "id": "63",
+            "description": "Салат, помидоры, огурцы, маслины, болгар. перец, Фета",
+            "image": "/home/user/HomeWork/i/salads/salad.png",
+            "price": 130,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Мини-тортилья",
+            "id": "64",
+            "description": "Мини-лепешка, куриное филе, сыр, салат, помидор",
+            "image": "/home/user/HomeWork/i/salads/tortiliya.png",
+            "price": 67,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Тортилья SFC",
+            "id": "65",
+            "description": "Куриное филе SFC, салат, помидор, сыр, майонез",
+            "image": "/home/user/HomeWork/i/salads/tortiliya.png",
+            "price": 124,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Тортилья пири-пири",
+            "id": "66",
+            "description": "С острой курицей Пири-пири, салат, помидор, майонез, сыр",
+            "image": "/home/user/HomeWork/i/salads/tortiliya.png",
+            "price": 133,
+            "category": "salads",
+            "market": "sfc",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Pepsi 1,25",
+            "id": "67",
+            "description": "Бутылка 1.25",
+            "image": "/home/user/HomeWork/i/drinks/pepsi-125.jpg",
+            "price": 115,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Маффин",
+            "id": "68",
+            "description": "",
+            "image": "/home/user/HomeWork/i/drinks/muffin.jpg",
+            "price": 70,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Pepsi 0,6",
+            "id": "69",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/pepsi-bottle.jpg",
+            "price": 75,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Mirinda 0,6",
+            "id": "70",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/mirinda-bottle.jpg",
+            "price": 75,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "7up 0,6",
+            "id": "71",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/7up-bottle.png",
+            "price": 75,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Mountain dew 0,6",
+            "id": "72",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/mountain-dew-bottle.jpg",
+            "price": 75,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Кленовый пекан",
+            "id": "73",
+            "description": "самая популярная выпечка Subway",
+            "image": "/home/user/HomeWork/i/drinks/maple-pecan.png",
+            "price": 75,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Сок",
+            "id": "74",
+            "description": "Упаковка 0.2 в ассортименте",
+            "image": "/home/user/HomeWork/i/drinks/juice.jpg",
+            "price": 40,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Чай Lipton",
+            "id": "75",
+            "description": "Бутылка 0.6, Зеленый, Малина, Лимон, Персик",
+            "image": "/home/user/HomeWork/i/drinks/lipton-tea.jpg",
+            "price": 80,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Аква Минерале (без газа)",
+            "id": "76",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/mineral-water-bottle.jpg",
+            "price": 60,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Аква Минерале (Газ)",
+            "id": "77",
+            "description": "Бутылка 0.6",
+            "image": "/home/user/HomeWork/i/drinks/mineral-water-gas.jpeg",
+            "price": 60,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Адреналин раш",
+            "id": "78",
+            "description": "",
+            "image": "/home/user/HomeWork/i/drinks/adrenaline-rush.jpg",
+            "price": 120,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Кукис",
+            "id": "79",
+            "description": "Творожная масса с шоколадной крошкой",
+            "image": "/home/user/HomeWork/i/drinks/cookies.jpg",
+            "price": 40,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Брюссельская вафля",
+            "id": "80",
+            "description": "",
+            "image": "/home/user/HomeWork/i/drinks/brussels-waffle.png",
+            "price": 70,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Круассан",
+            "id": "81",
+            "description": "",
+            "image": "/home/user/HomeWork/i/drinks/croissant.jpg",
+            "price": 80,
+            "category": "drinks",
+            "market": "subway",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Pepsi",
+            "id": "82",
+            "description": "Объемом от 0.4 Л, на выбор",
+            "image": "/home/user/HomeWork/i/drinks/pepsi.jpg",
+            "price": 50,
+            "category": "drinks",
+            "market": "subway",
+            "type": "options",
+            "weight": 1,
+            "volumes": {
+                "S": 50,
+                "M": 58,
+                "L": 85
+            }
+        },
+        {
+            "name": "Вегетарианская 35см",
+            "id": "83",
+            "description": "Лук, перец, томаты, сыр",
+            "image": "/home/user/HomeWork/i/pizza/Veggie.png",
+            "price": 250,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Pizza Spot (фирм) 35см",
+            "id": "84",
+            "description": "бекон, сыр, руккола",
+            "image": "/home/user/HomeWork/i/pizza/spotfirm.png",
+            "price": 300,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Маргарита 35см",
+            "id": "85",
+            "description": "Базилик, орегано, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/margo.png",
+            "price": 250,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Грибная 35см",
+            "id": "86",
+            "description": "Орегано, пармезан, шампиньоны, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/mashroom.png",
+            "price": 250,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Баварская 35см",
+            "id": "87",
+            "description": "Сосиски, охотничьи колбаски, моцарелла, пармезан",
+            "image": "/home/user/HomeWork/i/pizza/bavar.png",
+            "price": 300,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Пепперони 35см",
+            "id": "88",
+            "description": "Пепперони, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/pepperoni.png",
+            "price": 300,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Четыре Сыра Кватро Формаджио 35см",
+            "id": "89",
+            "description": "Творожный сыр, гауда, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/Cheese.png",
+            "price": 350,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Куриная 35см",
+            "id": "90",
+            "description": "курица копченая и маринованная, моцарелла, томаты",
+            "image": "/home/user/HomeWork/i/pizza/chicken.png",
+            "price": 350,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Ветчина с грибами 35см",
+            "id": "91",
+            "description": "Ветчина, шампиньоны, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/hammashroom.png",
+            "price": 350,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Морская 35см",
+            "id": "92",
+            "description": "морепродукты, томаты, моцарелла",
+            "image": "/home/user/HomeWork/i/pizza/sea.png",
+            "price": 350,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Сицилийская (ОСТРАЯ) 35см",
+            "id": "93",
+            "description": "Перец, лук, халапеньо, карбонат, курица",
+            "image": "/home/user/HomeWork/i/pizza/sicil.png",
+            "price": 400,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Гавайская 35см",
+            "id": "94",
+            "description": "курица, ананасы, белый соус",
+            "image": "/home/user/HomeWork/i/pizza/Hawaiian.png",
+            "price": 400,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Карбонара 35см",
+            "id": "95",
+            "description": "бекон, пармезан, моцарелла, орегано",
+            "image": "/home/user/HomeWork/i/pizza/karbonara.png",
+            "price": 400,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Мясная 35см",
+            "id": "96",
+            "description": "Карбонат, бекон, курица, сыр",
+            "image": "/home/user/HomeWork/i/pizza/meat.png",
+            "price": 450,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Четыре Сезона Кватро Стаджиони 35см",
+            "id": "97",
+            "description": "Каперсы, анчоусы, артишоки, грибы, ветчина",
+            "image": "/home/user/HomeWork/i/pizza/4.png",
+            "price": 450,
+            "category": "pizza",
+            "market": "",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Доп сыр (в шаурму)",
+            "id": "98",
+            "description": "Дополнительная порция сыра в любую шаурму",
+            "image": "/home/user/HomeWork/i/ingredients/products/cheese.png",
+            "price": 10,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Буррито с говядиной (ОСТР)",
+            "id": "99",
+            "description": "Говядина, Халапеньо, фасоль, сметана, сыр",
+            "image": "/home/user/HomeWork/i/shaurma/burrito.jpg",
+            "price": 230,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Буррито с курицей (остр)",
+            "id": "100",
+            "description": "Курица, Халапеньо, фасоль, сметана, сыр",
+            "image": "/home/user/HomeWork/i/shaurma/burrito.jpg",
+            "price": 190,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Фахитос с курицей",
+            "id": "101",
+            "description": "Курица, мексиканская смесь, соус гуакамоле, грибы, маслины",
+            "image": "/home/user/HomeWork/i/shaurma/fahitas.jpg",
+            "price": 200,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Фахитос с говядиной",
+            "id": "102",
+            "description": "Говядина, мексиканская смесь, соус гуакамоле, грибы, маслины",
+            "image": "/home/user/HomeWork/i/shaurma/fahitas.jpg",
+            "price": 250,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Шаурма c курицей",
+            "id": "103",
+            "description": "Куриная шаурма в лаваше с фирменным соусом и овощами",
+            "image": "/home/user/HomeWork/i/shaurma/shaurma_kurica.jpg",
+            "price": 170,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Шаурма c говядиной",
+            "id": "104",
+            "description": "Говядина со свежими овощами в лаваше",
+            "image": "/home/user/HomeWork/i/shaurma/shaurma_goviadina.jpg",
+            "price": 220,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Мини-шаурма c курицей",
+            "id": "105",
+            "description": "Мини-версия фирменной шаурмы",
+            "image": "/home/user/HomeWork/i/shaurma/shaurma_kurica.jpg",
+            "price": 130,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Мини-шаурма c говядиной",
+            "id": "106",
+            "description": "Мини-версия фирменной шаурмы",
+            "image": "/home/user/HomeWork/i/shaurma/shaurma_kurica.jpg",
+            "price": 150,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Свинина с овощами в соусе тайчили",
+            "id": "107",
+            "description": "Добрая порция свинины в лаваше",
+            "image": "/home/user/HomeWork/i/shaurma/pork-taychiliroll.png",
+            "price": 210,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        },
+        {
+            "name": "Курица с овощами в соусе терияки",
+            "id": "108",
+            "description": "Курица в лаваше со свежими овощами в соусе терияки",
+            "image": "/home/user/HomeWork/i/shaurma/teriyaki-chiken.png",
+            "price": 190,
+            "category": "shaurma",
+            "market": "doner",
+            "type": "single",
+            "weight": 1
+        }
+    ],
+    "volumes": {
+        "S": {
+            "name": "0.4 Л",
+            "short_name": "0.4"
+        },
+        "M": {
+            "name": "0.5 Л",
+            "short_name": "0.5"
+        },
+        "L": {
+            "name": "0.8 Л",
+            "short_name": "0.8"
+        },
+        "cheese": {
+            "name": "сырный",
+            "short_name": "сырный"
+        },
+        "garlic": {
+            "name": "чесночный",
+            "short_name": "чесночный"
+        },
+        "sweet-and-sour": {
+            "name": "кисло-сладкий",
+            "short_name": "кисло-сладкий"
+        },
+        "curry": {
+            "name": "карри",
+            "short_name": "карри"
+        },
+        "bbq": {
+            "name": "барбекю",
+            "short_name": "барбекю"
+        }
+    },
+    "menu2": [{
+            "name": "Бекон",
+            "id": "109",
+            "description": "(3-4 кусочка)",
+            "price": 35,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/bacon.png"
+        },
+        {
+            "name": "БМТ",
+            "id": "110",
+            "description": "",
+            "price": 60,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/bmt.png"
+        },
+        {
+            "name": "Сыр",
+            "id": "111",
+            "description": "(2 треугольника)",
+            "price": 20,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/cheese.png"
+        },
+        {
+            "name": "Моцарелла",
+            "id": "112",
+            "description": "(1 скуп)",
+            "price": 20,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/moc.png"
+        },
+        {
+            "name": "Куриная грудка",
+            "id": "113",
+            "description": "",
+            "price": 60,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/chicken-breast.png"
+        },
+        {
+            "name": "Курица Терияки",
+            "id": "114",
+            "description": "",
+            "price": 65,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/chicken-teriyaki.png"
+        },
+        {
+            "name": "Ветчина",
+            "id": "115",
+            "description": "(4 кусочка)",
+            "price": 45,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/ham.png"
+        },
+        {
+            "name": "Мелт",
+            "id": "116",
+            "description": "",
+            "price": 70,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/melt.png"
+        },
+        {
+            "name": "Грибы",
+            "id": "117",
+            "description": "(2 скупа)",
+            "price": 50,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/mushrooms.png"
+        },
+        {
+            "name": "Омлет",
+            "id": "118",
+            "description": "",
+            "price": 50,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/omelet.png"
+        },
+        {
+            "name": "Пепперони",
+            "id": "119",
+            "description": "(3 кусочка)",
+            "price": 40,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/pepperoni.png"
+        },
+        {
+            "name": "Свинина Барбекю",
+            "id": "120",
+            "description": "",
+            "price": 65,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/pork-bbq.png"
+        },
+        {
+            "name": "Ростбиф",
+            "id": "121",
+            "description": "(2-3 кусочка)",
+            "price": 55,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/roast.png"
+        },
+        {
+            "name": "Салями",
+            "id": "122",
+            "description": "(4 кусочка)",
+            "price": 40,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/salami.png"
+        },
+        {
+            "name": "Морепродукты",
+            "id": "123",
+            "description": "(2 скупа)",
+            "price": 45,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/seafood.png"
+        },
+        {
+            "name": "Острый итальянский",
+            "id": "124",
+            "description": "",
+            "price": 60,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/spicy-italian.png"
+        },
+        {
+            "name": "Сабвэй Клаб",
+            "id": "125",
+            "description": "",
+            "price": 70,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/subway-club.png"
+        },
+        {
+            "name": "Тунец",
+            "id": "126",
+            "description": "(2 скупа)",
+            "price": 55,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/tuna.png"
+        },
+        {
+            "name": "Индейка",
+            "id": "127",
+            "description": "(3 кусочка)",
+            "price": 45,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/turkey.png"
+        },
+        {
+            "name": "Индейка и ветчина",
+            "id": "128",
+            "description": "(2/2 кусочка)",
+            "price": 45,
+            "category": "fillings",
+            "image": "/home/user/HomeWork/i/ingredients/products/turkey-ham.png"
+        },
+
+        {
+            "name": "15 См",
+            "price": 0,
+            "category": "sizes",
+            "id": "129",
+            "description": "",
+            "image": "/home/user/HomeWork/i/sizes/1x.jpg"
+        },
+        {
+            "name": "30 См",
+            "price": 110,
+            "category": "sizes",
+            "id": "130",
+            "description": "",
+            "image": "/home/user/HomeWork/i/sizes/2x.jpg"
+        },
+        {
+            "name": "Белый итальянский",
+            "id": "131",
+            "description": "",
+            "price": 0,
+            "image": "/home/user/HomeWork/i/bread/white-italian.png",
+            "category": "breads"
+        },
+        {
+            "name": "Белый с кунжутом",
+            "id": "132",
+            "description": "",
+            "price": 0,
+            "image": "/home/user/HomeWork/i/bread/white-sesame.png",
+            "category": "breads"
+        },
+        {
+            "name": "Орегано-пармезан",
+            "id": "133",
+            "description": "",
+            "price": 0,
+            "image": "/home/user/HomeWork/i/bread/oregano-parmesan.png",
+            "category": "breads"
+        },
+        {
+            "name": "Серый",
+            "id": "134",
+            "description": "",
+            "price": 0,
+            "image": "/home/user/HomeWork/i/bread/unknown_1.png",
+            "category": "breads"
+        },
+        {
+            "name": "Серый с овсяными хлопьями",
+            "id": "135",
+            "description": "",
+            "price": 0,
+            "image": "/home/user/HomeWork/i/bread/grey-with-cereal.png",
+            "category": "breads"
+        },
+
+        {
+            "name": "Пекинская капуста",
+            "id": "136",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/pekinka.png"
+        },
+        {
+            "name": "Помидор",
+            "id": "137",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/tomato.png"
+        },
+        {
+            "name": "Соленый огурец",
+            "id": "138",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/pickled-cucumber.png"
+        },
+        {
+            "name": "Красный лук",
+            "id": "139",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/onion-purple.png"
+        },
+        {
+            "name": "Болгарский перец",
+            "id": "140",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/green-peppers-bulgarian.png"
+        },
+        {
+            "name": "Маслины",
+            "id": "141",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/olives.png"
+        },
+        {
+            "name": "Острый перец Халапеньо",
+            "id": "142",
+            "description": "",
+            "price": 0,
+            "category": "vegetables",
+            "image": "/home/user/HomeWork/i/ingredients/vegetables/pepper-hapapeno.png"
+        },
+
+
+        {
+            "name": "1000 Островов",
+            "id": "143",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/1000-islands.png"
+        },
+        {
+            "name": "Барбекю",
+            "id": "144",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/bbq.png"
+        },
+        {
+            "name": "Сырный",
+            "id": "145",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/cheese.png"
+        },
+        {
+            "name": "Чиппотл",
+            "id": "146",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/chipotle.png"
+        },
+        {
+            "name": "Чесночный",
+            "id": "147",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/garlic.png"
+        },
+        {
+            "name": "Майонез",
+            "id": "148",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/mayonnaise.png"
+        },
+        {
+            "name": "Горчица",
+            "id": "149",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/mustard.png"
+        },
+        {
+            "name": "Горчица медовая",
+            "id": "150",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/mustard-and-honey.png"
+        },
+        {
+            "name": "Оливковое масло",
+            "id": "151",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/olive-oil.png"
+        },
+        {
+            "name": "Острый кетчуп",
+            "id": "152",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/spicy-ketchup.png"
+        },
+        {
+            "name": "Кисло-сладкий",
+            "id": "153",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/sweet-and-sour.png"
+        },
+        {
+            "name": "Сладкий лук",
+            "id": "154",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/sweet-onion.png"
+        },
+        {
+            "name": "Винный уксус",
+            "id": "155",
+            "description": "",
+            "price": 0,
+            "category": "sauces",
+            "image": "/home/user/HomeWork/i/ingredients/sauces/wine-vinegar.png"
+        }
+    ],
+    "markets": {
+        "subway": {
+            "name": "Subway",
+            "image": "/home/user/HomeWork/i/markets/subway_logo.png"
+        },
+        "sfc": {
+            "name": "South Fried Chicke",
+            "image": "/home/user/HomeWork/i/markets/south_fried_chicken.png"
+        },
+        "doner": {
+            "name": "Донер Кебаб",
+            "image": "/home/user/HomeWork/i/markets/doner.png"
+        }
+    }
+}
