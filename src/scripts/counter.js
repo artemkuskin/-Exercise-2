@@ -6,7 +6,6 @@ class Button {
 
   set state(newState) {
     this.#state = newState;
-
     this.render();
   }
 
@@ -31,6 +30,7 @@ class Button {
       ...this.#state,
       counter: this.#state.counter - 1,
     };
+    
   }
 
   render() {

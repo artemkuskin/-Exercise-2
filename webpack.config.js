@@ -61,6 +61,7 @@ module.exports = {
                     {
                         loader: 'image-webpack-loader',
                         options: {
+                          limit: 25000,
                             mozjpeg: {
                               progressive: true,
                             },
