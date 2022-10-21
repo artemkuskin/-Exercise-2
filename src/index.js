@@ -1,8 +1,13 @@
 let Menu = require('./scripts/menu')
-let Catalog = require('./scripts/main')
+
+const pubSub = require("./scripts/pubsub");
+let MainMenu = require('./scripts/mainMenu')
+let publish = require('./scripts/publish')
+let sub = require('./scripts/subscribers')
 import "./index.html";
 import "./index.scss";
+let maunMenu = new MainMenu(document.querySelector('.menu'))
+let menu = new Menu(document.getElementById('container'))
 
-let nenu = new Menu(document.getElementById('container'))
-let catalog = new Catalog(document.querySelector('.contant').querySelector('.block'))
-    
+
+publish.publishEvent()

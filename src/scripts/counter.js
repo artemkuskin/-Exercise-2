@@ -12,6 +12,8 @@ class Button {
   constructor(root) {
     this.root = root;
 
+
+
     this.render();
   }
 
@@ -45,11 +47,13 @@ class Button {
         `;
 
     this.root.innerHTML = html;
-    let inc = this.root.querySelector(".increase");
-    let dec = this.root.querySelector(".decrease");
+    let inc = document.querySelector(".increase");
+    let dec = document.querySelector(".decrease");
+  
 
     if (inc) {
       inc.addEventListener("click", this.increment.bind(this));
+      console.log(12);
     }
 
     if (dec) {
