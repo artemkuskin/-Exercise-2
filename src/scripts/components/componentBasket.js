@@ -19,7 +19,21 @@ class ProductBusket {
   
     constructor(root) {
       this.root = root;
-      
+      document.addEventListener('click', async function(e) {
+        let menu = await store.getState()
+        let basket = await store2.getState()
+        
+        if (e.target.classList.contains('edit-button')) {
+           store2.dispatch({type: 'addBusket'})
+            
+            basket.name = menu[e.target.id].name
+            basket.amount = 2
+            basket.id = menu[e.target.id].id
+            basket.price = menu[e.target.id].price
+
+        }
+       
+    })
       
       this.render();
       store2.subscribe(this.render.bind(this));
@@ -42,19 +56,7 @@ class ProductBusket {
         
         
 
-    document.addEventListener('click', function(e) {
-        
-        if (e.target.classList.contains('edit-button')) {
-           store2.dispatch({type: 'addBusket'})
-            
-            basket.name = menu[e.target.id].name
-            basket.amount = 2
-            basket.id = menu[e.target.id].id
-            basket.price = menu[e.target.id].price
 
-        }
-       
-    })
     
   console.log(this.#state);
      
@@ -67,6 +69,7 @@ class ProductBusket {
       }
       this.root.innerHTML += html;
     }
+    
   }
   
   module.exports = ProductBusket;
