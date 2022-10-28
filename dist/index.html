@@ -1,1 +1,37 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Webpack</title><script defer="defer" src="main.30cbc9a20985775fafa9.js"></script><link href="main.68ce74f21dfa3e58b520.css" rel="stylesheet"></head><body><h1 class="title">СДЕЛАЙТЕ ЗАКАЗ НАПРЯМУЮ ИЗ РЕСТОРАНА</h1><div class="contant"><div class="block"><div class="menu"><p class="menu-link" id="pizza" href="#">ПИЦЦА</p><p class="menu-link" id="shaurma" href="#">ШАРУРМА</p><p class="menu-link" id="sandwiches" href="#">СЕНДВИЧИ</p><p class="menu-link" id="burgers" href="#">БУРГЕРЫ</p><p class="menu-link" id="chicken" href="#">КУРИЦА & КАРТОФЕЛЬ</p><p class="menu-link" id="salads" href="#">ТОРТИЛЬЯ & САЛАТЫ</p><p class="menu-link" id="drinks" href="#">НАПИТКИ & ДЕСЕРТЫ</p></div><div class="basket"><div class="basket-icon"><img src="assets/basket.png" alt="" class="icon"><h2 class="basket-title">КОРЗИНА</h2></div><div class="basket-text"><div><p>Название</p><div id="tovar"></div></div><div><p>Количество</p><div id="counter-text"></div></div></div><p>Итого: <span class="all-price">0</span> руб</p><button class="basket-button">ОФОРМИТЬ ЗАКАЗ</button></div></div><div id="container" class="sandwiches"></div><div id="fon" class="fon"><div class="content__ingredients" href="1"><div class="content__ingredients-title"><span class="close_modal_window">X</span><h2 class="content__ingredients-title-text">ВЫБЕРИТЕ РАЗМЕР ХЛЕБА</h2></div><div class="categories"><a class="categories-link size" style="border-top-left-radius:10px;border-bottom-left-radius:10px">Размер</a> <a class="categories-link bread">Хлеб</a> <a class="categories-link veget">Овощи</a> <a class="categories-link sous">Соусы</a> <a class="categories-link filling">Начинка</a> <a class="categories-link result">Готово!</a></div><div class="content__ingredients-button"><button class="content__ingredients-button-next">ВПЕРЕД ></button> <button class="content__ingredients-button-next-back">НАЗАД</button></div><div id="content__ingredients-price" class="sizes"></div><footer><h2 class="footer-text">Итого: <strong id="itog-price">0</strong>руб</h2></footer></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Redux</title>
+    <script defer="defer" src="main.150953db49e9a564ac9a.js"></script>
+    <link href="main.0eb7321cb8289bec138d.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container pt-5">
+      <h1 class="heading">
+        <span>Redux</span>
+        <button class="btn btn-info" id="theme">Сменить тему</button>
+      </h1>
+      <hr />
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Счетчик: <span id="counter"></span></h5>
+          <button class="btn btn-primary" id="add">Добавить</button>
+          <button class="btn btn-danger" id="sub">Убрать</button>
+          <button class="btn btn-success" id="async">Async</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -132,13 +132,28 @@ body {
     border-bottom-style: outset;
     padding-bottom: 30px;
     border-color: black;
-    width: 280px;
     height: 25px;
 }
 
 .container-text {
     color: rgb(212, 21, 21);
     font-family: cursive;
+}
+
+#tovar {
+    display: inline;
+}
+
+.basket-amoun {
+    margin: 0px 0px 0px 70px;
+}
+
+.basket-name {
+    margin: 10px;
+}
+
+#counter-text {
+    display: inline-grid;
 }
 
 .item-link-text {

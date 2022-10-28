@@ -1,7 +1,8 @@
+
 class Button {
   root;
   #state = {
-    counter: 0,
+    counter: 1,
   };
 
   set state(newState) {
@@ -13,18 +14,18 @@ class Button {
     this.root = root;
 
 
-
     this.render();
   }
 
   increment() {
     // update counter
     // this.#state.counter = this.#state.counter + 1;
-
+   
     this.state = {
       ...this.#state,
       counter: this.#state.counter + 1,
-    };
+    }
+
   }
 
   decrement() {
@@ -37,23 +38,21 @@ class Button {
 
   render() {
     // removeEventListener
-
-    const html = `
+    this.root.innerHTML = ''
+    let html = ''
+     html = `
     <button class="increase"> + </button>
-    <input type="number" value='${this.#state.counter}' class="input" id="${
-      "a" + "menu[key].id "
-    }">
+    <input type="number" value='${this.#state.counter}' class="input">
     <button class ="decrease"> - </button>
         `;
 
     this.root.innerHTML = html;
-    let inc = document.querySelector(".increase");
-    let dec = document.querySelector(".decrease");
+    let inc = this.root.querySelector(".increase"); 
+    let dec = this.root.querySelector(".decrease");
   
 
     if (inc) {
       inc.addEventListener("click", this.increment.bind(this));
-      console.log(12);
     }
 
     if (dec) {

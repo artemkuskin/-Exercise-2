@@ -1,13 +1,14 @@
 let Menu = require('./scripts/menu')
+let Basket = require('./scripts/components/basket')
 
-const pubSub = require("./scripts/pubsub");
-let MainMenu = require('./scripts/mainMenu')
-let publish = require('./scripts/publish')
-let sub = require('./scripts/subscribers')
+let MainMenu = require('./scripts/components/mainMenu')
+
 import "./index.html";
 import "./index.scss";
-let maunMenu = new MainMenu(document.querySelector('.menu'))
-let menu = new Menu(document.getElementById('container'))
 
 
-publish.publishEvent()
+new MainMenu(document.querySelector('.menu'))
+new Menu(document.getElementById('container'))
+ new Basket(document.querySelector('.basket'))
+
+
