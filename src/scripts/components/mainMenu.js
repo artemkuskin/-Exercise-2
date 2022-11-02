@@ -1,4 +1,5 @@
-const { createStore } = require("../reduxFile/redux");
+const { createStore } = require("../reduxFile/redux2");
+
 const { rootReducer } = require("../reduxFile/rootReducer");
 
 let store = createStore(rootReducer, '')
@@ -15,7 +16,6 @@ class MainMenu {
       "salads",
       "drinks",
     ],
-    selectedCategory: "",
   };
 
   set state(newState) {

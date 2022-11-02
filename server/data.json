@@ -1327,7 +1327,7 @@
             "description": "(3-4 кусочка)",
             "price": 35,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/bacon.png"
+            "image": "baconDop.png"
         },
         {
             "name": "БМТ",
@@ -1335,7 +1335,7 @@
             "description": "",
             "price": 60,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/bmt.png"
+            "image": "bmtDop.png"
         },
         {
             "name": "Сыр",
@@ -1343,7 +1343,7 @@
             "description": "(2 треугольника)",
             "price": 20,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/cheese.png"
+            "image": "cheese.png"
         },
         {
             "name": "Моцарелла",
@@ -1351,7 +1351,7 @@
             "description": "(1 скуп)",
             "price": 20,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/moc.png"
+            "image": "moc.png"
         },
         {
             "name": "Куриная грудка",
@@ -1359,7 +1359,7 @@
             "description": "",
             "price": 60,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/chicken-breast.png"
+            "image": "chicken-breast.png"
         },
         {
             "name": "Курица Терияки",
@@ -1367,7 +1367,7 @@
             "description": "",
             "price": 65,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/chicken-teriyaki.png"
+            "image": "chicken-teriyaki.png"
         },
         {
             "name": "Ветчина",
@@ -1375,7 +1375,7 @@
             "description": "(4 кусочка)",
             "price": 45,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/ham.png"
+            "image": "ham.png"
         },
         {
             "name": "Мелт",
@@ -1383,7 +1383,7 @@
             "description": "",
             "price": 70,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/melt.png"
+            "image": "meltDop.png"
         },
         {
             "name": "Грибы",
@@ -1391,7 +1391,7 @@
             "description": "(2 скупа)",
             "price": 50,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/mushrooms.png"
+            "image": "mushrooms.png"
         },
         {
             "name": "Омлет",
@@ -1399,7 +1399,7 @@
             "description": "",
             "price": 50,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/omelet.png"
+            "image": "omelet.png"
         },
         {
             "name": "Пепперони",
@@ -1407,7 +1407,7 @@
             "description": "(3 кусочка)",
             "price": 40,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/pepperoni.png"
+            "image": "pepperoniDop.png"
         },
         {
             "name": "Свинина Барбекю",
@@ -1415,7 +1415,7 @@
             "description": "",
             "price": 65,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/pork-bbq.png"
+            "image": "pork-bbq.png"
         },
         {
             "name": "Ростбиф",
@@ -1423,7 +1423,7 @@
             "description": "(2-3 кусочка)",
             "price": 55,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/roast.png"
+            "image": "roast.png"
         },
         {
             "name": "Салями",
@@ -1431,7 +1431,7 @@
             "description": "(4 кусочка)",
             "price": 40,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/salami.png"
+            "image": "salami.png"
         },
         {
             "name": "Морепродукты",
@@ -1439,7 +1439,7 @@
             "description": "(2 скупа)",
             "price": 45,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/seafood.png"
+            "image": "seafood.png"
         },
         {
             "name": "Острый итальянский",
@@ -1447,7 +1447,7 @@
             "description": "",
             "price": 60,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/spicy-italian.png"
+            "image": "spicy-italian.png"
         },
         {
             "name": "Сабвэй Клаб",
@@ -1455,7 +1455,7 @@
             "description": "",
             "price": 70,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/subway-club.png"
+            "image": "subway-club.png"
         },
         {
             "name": "Тунец",
@@ -1463,7 +1463,7 @@
             "description": "(2 скупа)",
             "price": 55,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/tuna.png"
+            "image": "tuna.png"
         },
         {
             "name": "Индейка",
@@ -1471,7 +1471,7 @@
             "description": "(3 кусочка)",
             "price": 45,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/turkey.png"
+            "image": "turkey.png"
         },
         {
             "name": "Индейка и ветчина",
@@ -1479,7 +1479,7 @@
             "description": "(2/2 кусочка)",
             "price": 45,
             "category": "fillings",
-            "image": "/home/user/HomeWork/i/ingredients/products/turkey-ham.png"
+            "image": "turkey-ham.png"
         },
 
         {
@@ -1488,7 +1488,7 @@
             "category": "sizes",
             "id": "129",
             "description": "",
-            "image": "/home/user/HomeWork/i/sizes/1x.jpg"
+            "image": "1x.jpg"
         },
         {
             "name": "30 См",
@@ -1496,14 +1496,14 @@
             "category": "sizes",
             "id": "130",
             "description": "",
-            "image": "/home/user/HomeWork/i/sizes/2x.jpg"
+            "image": "2x.jpg"
         },
         {
             "name": "Белый итальянский",
             "id": "131",
             "description": "",
             "price": 0,
-            "image": "/home/user/HomeWork/i/bread/white-italian.png",
+            "image": "white-italian.png",
             "category": "breads"
         },
         {
@@ -1511,7 +1511,7 @@
             "id": "132",
             "description": "",
             "price": 0,
-            "image": "/home/user/HomeWork/i/bread/white-sesame.png",
+            "image": "white-sesame.png",
             "category": "breads"
         },
         {
@@ -1519,7 +1519,7 @@
             "id": "133",
             "description": "",
             "price": 0,
-            "image": "/home/user/HomeWork/i/bread/oregano-parmesan.png",
+            "image": "oregano-parmesan.png",
             "category": "breads"
         },
         {
@@ -1527,7 +1527,7 @@
             "id": "134",
             "description": "",
             "price": 0,
-            "image": "/home/user/HomeWork/i/bread/unknown_1.png",
+            "image": "unknown_1.png",
             "category": "breads"
         },
         {
@@ -1535,7 +1535,7 @@
             "id": "135",
             "description": "",
             "price": 0,
-            "image": "/home/user/HomeWork/i/bread/grey-with-cereal.png",
+            "image": "grey-with-cereal.png",
             "category": "breads"
         },
 
@@ -1545,7 +1545,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/pekinka.png"
+            "image": "pekinka.png"
         },
         {
             "name": "Помидор",
@@ -1553,7 +1553,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/tomato.png"
+            "image": "tomato.png"
         },
         {
             "name": "Соленый огурец",
@@ -1561,7 +1561,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/pickled-cucumber.png"
+            "image": "pickled-cucumber.png"
         },
         {
             "name": "Красный лук",
@@ -1569,7 +1569,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/onion-purple.png"
+            "image": "onion-purple.png"
         },
         {
             "name": "Болгарский перец",
@@ -1577,7 +1577,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/green-peppers-bulgarian.png"
+            "image": "green-peppers-bulgarian.png"
         },
         {
             "name": "Маслины",
@@ -1585,7 +1585,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/olives.png"
+            "image": "olives.png"
         },
         {
             "name": "Острый перец Халапеньо",
@@ -1593,7 +1593,7 @@
             "description": "",
             "price": 0,
             "category": "vegetables",
-            "image": "/home/user/HomeWork/i/ingredients/vegetables/pepper-hapapeno.png"
+            "image": "pepper-hapapeno.png"
         },
 
 
@@ -1603,7 +1603,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/1000-islands.png"
+            "image": "1000-islands.png"
         },
         {
             "name": "Барбекю",
@@ -1611,7 +1611,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/bbq.png"
+            "image": "bbq.png"
         },
         {
             "name": "Сырный",
@@ -1619,7 +1619,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/cheese.png"
+            "image": "cheeseSous.png"
         },
         {
             "name": "Чиппотл",
@@ -1627,7 +1627,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/chipotle.png"
+            "image": "chipotle.png"
         },
         {
             "name": "Чесночный",
@@ -1635,7 +1635,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/garlic.png"
+            "image": "garlic.png"
         },
         {
             "name": "Майонез",
@@ -1643,7 +1643,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/mayonnaise.png"
+            "image": "mayonnaise.png"
         },
         {
             "name": "Горчица",
@@ -1651,7 +1651,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/mustard.png"
+            "image": "mustard.png"
         },
         {
             "name": "Горчица медовая",
@@ -1659,7 +1659,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/mustard-and-honey.png"
+            "image": "mustard-and-honey.png"
         },
         {
             "name": "Оливковое масло",
@@ -1667,7 +1667,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/olive-oil.png"
+            "image": "olive-oil.png"
         },
         {
             "name": "Острый кетчуп",
@@ -1675,7 +1675,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/spicy-ketchup.png"
+            "image": "spicy-ketchup.png"
         },
         {
             "name": "Кисло-сладкий",
@@ -1683,7 +1683,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/sweet-and-sour.png"
+            "image": "sweet-and-sour.png"
         },
         {
             "name": "Сладкий лук",
@@ -1691,7 +1691,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/sweet-onion.png"
+            "image": "sweet-onion.png"
         },
         {
             "name": "Винный уксус",
@@ -1699,7 +1699,7 @@
             "description": "",
             "price": 0,
             "category": "sauces",
-            "image": "/home/user/HomeWork/i/ingredients/sauces/wine-vinegar.png"
+            "image": "wine-vinegar.png"
         }
     ],
     "markets": {

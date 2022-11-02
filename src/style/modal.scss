@@ -1,4 +1,4 @@
-#fon {
+.fon {
     display: none;
     text-align: center;
     align-items: center;
@@ -12,14 +12,47 @@
     z-index: 1000;
 }
 
-.fon .content__ingredients {
+.content__ingredients {
+    background-color: rgb(231, 231, 231);
+    max-width: 800px;
+    margin: auto;
+    height: 790px;
+    box-shadow: 1px 1px 6px 0px black;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 26px;
+}
+
+#fon .content__ingredients {
     margin: 142px auto;
     border: 1px solid #888;
     height: 77%;
     z-index: 99999;
 }
 
-.fon .content__ingredients .close_modal_window {
+.content__ingredients-title-text {
+    color: white;
+}
+
+.modalActive {
+    display: block;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#fon .content__ingredients .close_modal_window {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -39,7 +72,7 @@
 }
 
 .categories {
-    width: 750px;
+    width: 710px;
     height: 50px;
     margin: 22px auto;
     background-color: white;
@@ -115,4 +148,63 @@
 
 .itog-price {
     display: inline-flex;
+}
+
+#fon--active {
+    visibility: visible;
+}
+
+#fon--active .content__ingredients {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.price-popup {
+    width: 202px;
+    cursor: pointer;
+}
+
+.price-boll2 {
+    background-color: rgba(255, 208, 0, 0.774);
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    display: flex;
+    margin: 7px 22px 26px 14px;
+    box-shadow: 0px 0px 9px -3px
+}
+
+.price-boll {
+    border-radius: 50%;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    margin: 12px 0px 0px 12px;
+}
+
+.price-text {
+    color: rgb(206, 60, 60);
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.text-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+}
+
+.content__ingredients-img {
+    margin-top: 15px;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    object-fit: fill;
+}
+
+.price-popup:hover {
+    border-radius: 10px;
+    background-color: rgba(255, 208, 0, 0.774);
+    box-shadow: 0px 0px 9px -3px
 }

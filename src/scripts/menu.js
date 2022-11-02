@@ -2,8 +2,9 @@ let subwayLogo = require("../i/markets/subway_logo.png");
 let donerLogo = require("../i/img/doner.png");
 let chickenLogo = require("../i/img/south_fried_chicken.png");
 let Button = require("./components/counter");
-const { createStore } = require("./reduxFile/redux");
+const { createStore } = require("./reduxFile/redux2");
 const { rootReducer, menuReducer } = require("./reduxFile/rootReducer");
+
 let store = createStore(rootReducer, "pizza");
 let menuStore = createStore(menuReducer, {});
 
@@ -24,9 +25,9 @@ class Menu {
   constructor(root) {
     this.root = root;
     document.addEventListener('click', async function(e) {
-      if (e.target.classList.contains('menu-link'))
-       store.dispatch({type: e.target.id})
-      
+      if (e.target.classList.contains('menu-link')) {
+       store.dispatch({type: e.target.id});
+      }
    })
   
     this.render();
@@ -35,7 +36,6 @@ class Menu {
   }
 
   async render() {
-    console.log(1);
     this.#state.category = store.getState()
     let menu = await menuStore.getState();
 
@@ -52,7 +52,7 @@ class Menu {
       let out = "";
 
       if (menu[key].category === this.#state.category) {
-        out += `<div class="products" >`;
+        out += `<div class="products" id= ${menu[key].id + 1} >`;
         if (menu[key].market === "subway") {
           out += `<img src='${subwayLogo}' class="item-img">`;
         } else if (menu[key].market === "sfc") {

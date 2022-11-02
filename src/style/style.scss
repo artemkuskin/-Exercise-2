@@ -53,18 +53,28 @@ body {
     border-top-right-radius: 5px;
 }
 
+.basketElem {
+    display: flex;
+    align-items: center;
+    width: 252px;
+    justify-content: space-between;
+}
+
+
+
 .icon {
     width: 50px;
     height: 50px;
     filter: drop-shadow(4px 4px 3px white) invert(1);
 }
 
+
+
 .basket-title {
     color: white;
 }
 
 .basket-text {
-    display: flex;
     justify-content: space-around;
     border-bottom-style: solid;
     border-color: orange;
