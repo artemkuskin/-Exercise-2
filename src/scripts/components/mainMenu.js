@@ -1,5 +1,6 @@
-const { createStore } = require("../reduxFile/redux2");
+// const { createStore } = require("../reduxFile/redux2");
 
+const { createStore } = require("redux");
 const { rootReducer } = require("../reduxFile/rootReducer");
 
 let store = createStore(rootReducer, '')

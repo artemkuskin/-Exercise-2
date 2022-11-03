@@ -41,6 +41,13 @@ export const basketReducer = (state, action) => {
   return state;
 };
 
+export const basketModal = (state, action) => {
+  if (action.type === 'addBasketModal') {
+    return state;
+  }
+  return state
+}
+
 export const sumReducer = (state, action) => {
   if (action.type === "updateSum") {
     return state + 1;

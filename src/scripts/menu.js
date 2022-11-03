@@ -2,10 +2,12 @@ let subwayLogo = require("../i/markets/subway_logo.png");
 let donerLogo = require("../i/img/doner.png");
 let chickenLogo = require("../i/img/south_fried_chicken.png");
 let Button = require("./components/counter");
-const { createStore } = require("./reduxFile/redux2");
+//const { createStore } = require("./reduxFile/redux2");
 const { rootReducer, menuReducer } = require("./reduxFile/rootReducer");
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
 
-let store = createStore(rootReducer, "pizza");
+let store = createStore(rootReducer, "pizza", applyMiddleware(logger));
 let menuStore = createStore(menuReducer, {});
 
 class Menu {

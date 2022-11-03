@@ -1,9 +1,9 @@
 
-const { applyMiddleware } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
 const { default: logger } = require("redux-logger");
-const { createStore } = require("../reduxFile/redux2");
+//const { createStore } = require("../reduxFile/redux2");
 const { menuReducer, basketReducer } = require("../reduxFile/rootReducer");
-let store2 = createStore(basketReducer, []);
+let store2 = createStore(basketReducer, [], applyMiddleware(logger));
 
 let store = createStore(menuReducer);
 class ProductBusket {

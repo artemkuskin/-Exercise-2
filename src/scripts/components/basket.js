@@ -1,7 +1,10 @@
-const { createStore } = require("../reduxFile/redux2");
+//const { createStore } = require("../reduxFile/redux2");
 let basketImg = require("./basketImg/basket.png");
 const { menuReducer, basketReducer, rootReducer } = require("../reduxFile/rootReducer");
-let store2 = createStore(basketReducer, []);
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
+let store2 = createStore(basketReducer, [], applyMiddleware(logger)
+);
 let store = createStore(menuReducer);
 class Busket {
   root;
@@ -22,12 +25,11 @@ class Busket {
     document.addEventListener(
       "click",
       this.addComponent.bind(this),
-      this.resultSum(),
+      
     );
 
     document.addEventListener('click', 
-    this.deleteElem.bind(this),
-    this.resultSum())
+    this.deleteElem.bind(this))
     this.render();
   }
 
@@ -68,10 +70,16 @@ class Busket {
   resultSum() {
     basketArr = store2.getState();
     let sum = 0;
-    for (let key in basketArr) {
-      sum += parseInt(basketArr[key].price) * basketArr[key].amount;
-    }
-    return sum;
+    let html = ''
+    
+      for (let key in basketArr) {
+     
+        sum += parseInt(basketArr[key].price) * basketArr[key].amount;
+        html = `<span class="all-price">Итого:${sum} Руб</span> `;
+        document.getElementById("result-sum").innerHTML = html;
+        
+      }
+      return html 
   }
 
   deleteElem (e) {
@@ -84,10 +92,12 @@ class Busket {
       }
       console.log(basketArr);
     }
+    this.resultSum()
   }
 
   text() {
     let html= "";
+    basketArr = store2.getState()
     for (let key in basketArr) {
       html += ` <div class='basketElem' id='idBasket${basketArr[key].id}Parent'><p class='product-name' id="idBasket${basketArr[key].id}">${basketArr[key].name} - ${basketArr[key].amount}</p>
       <button id="${basketArr[key].id}" class='idBasketButton'>X</button></div>`;
@@ -121,11 +131,12 @@ class Busket {
                       <div id="counter-text"></div>
                   </div>
               </div>
-              <p>Итого: <span class="all-price">${this.resultSum()}</span> руб</p>
+              <p id='result-sum'>Итого:0 Руб</p>
               <button class="basket-button">ОФОРМИТЬ ЗАКАЗ</button>
           `;
     this.root.innerHTML = html;
     this.text();
+    this.resultSum()
   }
 }
 

@@ -1,7 +1,9 @@
-const { createStore } = require("../reduxFile/redux2");
+//const { createStore } = require("../reduxFile/redux2");
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
 const { activReducer, menuReducer } = require("../reduxFile/rootReducer");
 let menuStore = createStore(menuReducer);
-let store = createStore(activReducer, "fon");
+let store = createStore(activReducer, "fon", applyMiddleware(logger));
 class Modal {
   root;
   #state = {

@@ -1,5 +1,6 @@
 let ModalComponent = require('../modalComponents.js')
 let FillName = require('./modalFillName')
+let BasketModal = require('./basketModal')
 
 class ModalWindow {
   root;
@@ -50,6 +51,7 @@ class ModalWindow {
     this.root.innerHTML = html;
     new  ModalComponent(document.querySelector('#content__ingredients-price'))
     new FillName(document.querySelector('.categories'))
+    new BasketModal()
   }
 }
 
