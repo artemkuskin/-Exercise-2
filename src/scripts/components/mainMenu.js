@@ -1,9 +1,7 @@
 // const { createStore } = require("../reduxFile/redux2");
 
-const { createStore } = require("redux");
-const { rootReducer } = require("../reduxFile/rootReducer");
+const { menuStore } = require("../reduxFile/sore");
 
-let store = createStore(rootReducer, '')
 
 class MainMenu {
   root;
@@ -26,6 +24,11 @@ class MainMenu {
 
   constructor(root) {
     this.root = root;
+    let arr = this.#state.list
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains('menu-link'))
+      menuStore.dispatch({type: e.target.id})
+    })
 
     this.render();
   }

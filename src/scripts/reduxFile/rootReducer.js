@@ -34,26 +34,40 @@ export function modalRootReducer(state, action) {
   return state;
 }
 
+export function modalFillNameReducer(state, action) {
+  if (action.type === 'fillName') {
+    return (state = [
+      "sizes",
+      "breads",
+      "vegetables",
+      "sauces",
+      "fillings",
+      "result",
+    ])
+  }
+  return state
+}
+
+export const addModalBasketElem = (state, action) => {
+  if (action.type === 'basketElem') {
+    return state = {...action.payload}
+  }
+  return state
+}
+
 export const basketReducer = (state, action) => {
   if (action.type === "addBasket") {
-    return state;
+    return [...state]
   }
   return state;
 };
 
 export const basketModal = (state, action) => {
   if (action.type === 'addBasketModal') {
-    return state;
+    return {...state};
   }
   return state
 }
-
-export const sumReducer = (state, action) => {
-  if (action.type === "updateSum") {
-    return state + 1;
-  }
-  return state;
-};
 
 export const activReducer = (state, action) => {
   if (action.type === "active") {

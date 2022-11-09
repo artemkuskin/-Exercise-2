@@ -1,18 +1,20 @@
-//const { createStore } = require("../reduxFile/redux2");
+const { createStore } = require("../reduxFile/redux2");
 let basketImg = require("./basketImg/basket.png");
-const { menuReducer, basketReducer, rootReducer } = require("../reduxFile/rootReducer");
-const { createStore, applyMiddleware } = require("redux");
-const { default: logger } = require("redux-logger");
-let store2 = createStore(basketReducer, [], applyMiddleware(logger)
-);
+const {
+  menuReducer,
+  basketReducer,
+} = require("../reduxFile/rootReducer");
+const {menuStore} = require('../reduxFile/sore')
+let store2 = createStore(basketReducer, []);
 let store = createStore(menuReducer);
+
 class Busket {
   root;
   #state = {};
 
   set state(newState) {
     this.#state = newState;
-    this.render();
+    this.#state
   }
 
   constructor(root) {
@@ -22,82 +24,79 @@ class Busket {
 
       this.render();
     });
-    document.addEventListener(
-      "click",
-      this.addComponent.bind(this),
-      
-    );
+    document.addEventListener("click", this.addComponent.bind(this));
 
-    document.addEventListener('click', 
-    this.deleteElem.bind(this))
+    document.addEventListener("click", this.deleteElem.bind(this));
     this.render();
   }
+
 
   async addComponent(e) {
     menu = await store.getState();
     basketArr = await store2.getState();
     basketElem = this.#state;
+    id = e.target.id
 
-    if (e.target.classList.contains("edit-button") && menu[e.target.id].category !== 'sandwiches') {
-      if (document.getElementById("idBasket" + menu[e.target.id].id)) {
+    if (
+      e.target.classList.contains("edit-button") &&
+      menuStore.getState() !== "sandwiches"
+    ) {
+      if (document.getElementById("idBasket" + menu[id].id)) {
         for (let key in basketArr) {
-          if (basketArr[key].id === menu[e.target.id].id) {
+          if (basketArr[key].id === menu[id].id) {
             basketArr[key].amount =
-              +basketArr[key].amount +
-              +document
-                .getElementById(`${menu[e.target.id].id + 1}`)
-                .querySelector(".input").value;
-            console.log(basketArr);
+              parseInt(basketArr[key].amount) +
+              parseInt(document
+                .getElementById(`${menu[id].id + 1}`)
+                .querySelector(".input").value);
 
             this.text();
           }
         }
       } else {
-        store2.dispatch({ type: "addBasket" });
-        basketElem.name = menu[e.target.id].name;
+        store2.dispatch({ type: "addBasket"});
+        basketElem.name = menu[id].name;
         basketElem.amount = parseInt(
           document
-            .getElementById(`${menu[e.target.id].id + 1}`)
+            .getElementById(`${menu[id].id + 1}`)
             .querySelector(".input").value
         );
-        basketElem.id = menu[e.target.id].id
-        basketElem.price = menu[e.target.id].price;
-        console.log(store2.getState());
+        basketElem.id = menu[id].id;
+        basketElem.price = menu[id].price;
       }
     }
+    
   }
 
   resultSum() {
     basketArr = store2.getState();
     let sum = 0;
-    let html = ''
-    
-      for (let key in basketArr) {
-     
-        sum += parseInt(basketArr[key].price) * basketArr[key].amount;
-        html = `<span class="all-price">Итого:${sum} Руб</span> `;
-        document.getElementById("result-sum").innerHTML = html;
-        
-      }
-      return html 
+    let html = "";
+
+    for (let key in basketArr) {
+      sum += parseInt(basketArr[key].price) * basketArr[key].amount;
+    }
+    html = `<span class="all-price">Итого:${sum} Руб</span> `;
+    document.getElementById("result-sum").innerHTML = html;
+    return html;
   }
 
-  deleteElem (e) {
-    let basketArr = store2.getState()
-    if (e.target.classList.contains('idBasketButton')) {
-      document.getElementById('idBasket' + e.target.id + 'Parent').remove()
-      for (let key in basketArr) { 
-        if(basketArr[key].id === e.target.id)
-       basketArr.splice([key], 1)
+  deleteElem(e) {
+    let basketArr = store2.getState();
+    id = e.target.id
+    if (e.target.classList.contains("idBasketButton")) {
+      document.getElementById("idBasket" + id + "Parent").remove();
+      for (let key in basketArr) {
+        if (basketArr[key].id === id) basketArr.splice([key], 1);
       }
       console.log(basketArr);
     }
-    this.resultSum()
+    this.resultSum();
   }
 
   text() {
-    let html= "";
-    basketArr = store2.getState()
+    let html = "";
+    basketArr = store2.getState();
     for (let key in basketArr) {
       html += ` <div class='basketElem' id='idBasket${basketArr[key].id}Parent'><p class='product-name' id="idBasket${basketArr[key].id}">${basketArr[key].name} - ${basketArr[key].amount}</p>
       <button id="${basketArr[key].id}" class='idBasketButton'>X</button></div>`;
@@ -136,8 +135,9 @@ class Busket {
           `;
     this.root.innerHTML = html;
     this.text();
-    this.resultSum()
+   
   }
 }
 
 module.exports = Busket;
+

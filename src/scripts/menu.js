@@ -2,20 +2,17 @@ let subwayLogo = require("../i/markets/subway_logo.png");
 let donerLogo = require("../i/img/doner.png");
 let chickenLogo = require("../i/img/south_fried_chicken.png");
 let Button = require("./components/counter");
-//const { createStore } = require("./reduxFile/redux2");
-const { rootReducer, menuReducer } = require("./reduxFile/rootReducer");
-const { createStore, applyMiddleware } = require("redux");
-const { default: logger } = require("redux-logger");
-
-let store = createStore(rootReducer, "pizza", applyMiddleware(logger));
-let menuStore = createStore(menuReducer, {});
+const { createStore } = require("./reduxFile/redux2");
+const { menuReducer } = require("./reduxFile/rootReducer");
+const {menuStore} = require('./reduxFile/sore')
+let menuStore2 = createStore(menuReducer, {});
 
 class Menu {
   root;
 
   #state = {
     category: "",
-    menu: menuStore.getState(),
+    menu: menuStore2.getState(),
   };
 
   set state(newState) {
@@ -26,22 +23,16 @@ class Menu {
 
   constructor(root) {
     this.root = root;
-    document.addEventListener('click', async function(e) {
-      if (e.target.classList.contains('menu-link')) {
-       store.dispatch({type: e.target.id});
-      }
-   })
-  
+      
     this.render();
 
-    store.subscribe(this.render.bind(this));
+    menuStore.subscribe(this.render.bind(this));
   }
 
   async render() {
-    this.#state.category = store.getState()
-    let menu = await menuStore.getState();
+    this.#state.category = menuStore.getState()
+    let menu = await menuStore2.getState();
 
-    window.store = store;
     this.root.innerHTML = "";
 
     for (let key in menu) {
@@ -87,8 +78,10 @@ class Menu {
                   }"> В КОРЗИНУ  </button> 
                  </div>`;
         this.root.innerHTML += out;
+
       }
     }
+    
 
     for (let key in menu) {
       if (menu[key].category === this.#state.category) {
@@ -97,137 +90,10 @@ class Menu {
             .getElementById("container")
             .querySelector(`.counter${+menu[key].id}`)
         );
+        let addButton = document.getElementById(`${[key]}`)
       }
     }
   }
 }
 
 module.exports = Menu;
-// let subwayLogo = require("../i/markets/subway_logo.png");
-// let donerLogo = require("../i/img/doner.png");
-// let chickenLogo = require("../i/img/south_fried_chicken.png");
-// let Button = require("./counter");
-// const pubSub = require("./pubsub");
-// const { createStore } = require("./redux");
-// const { rootReducer, menuReducer } = require("./rootReducer");
-// let store  = createStore(rootReducer, 'pizza')
-// let menu = createStore(menuReducer, {})
-
-// class Menu {
-//   root;
-
-//   #state = {
-//     category: store.getState()
-//   };
-
-//   set state(newState) {
-//     this.#state = newState;
-
-//     this.render();
-//   }
-
-//   constructor(root) {
-//     this.root = root;
-
-//     this.render();
-
-//     // store.subscribe(this.render.bind(this))
-//   }
-
-//   async  render() {
-//     console.log(menu.getState());
-//     let data = menu.getState()
-
-//     // let button = document.getElementById('sandwiches')
-//     //   button.addEventListener('click', async function() {
-//     //      store.dispatch({type: 'changeCategory'})
-//     //      let categoris = await store.getState()
-//     //    return categoris
-//     //   })
-
-//     window.store = store
-//     this.root.innerHTML =  ''
-
-//       menu.subscribe(() => {
-//         for (let key in data) {
-// console.log(1);
-//         let img =
-//           data[key].category && data[key].image
-//             ? require(`../i/${data[key].category}/${data[key].image}`)
-//             : "";
-
-//         let out = "";
-
-//         if (data[key].category === this.#state.category) {
-//           out += '<div class="products" >';
-//           if (data[key].market === "subway") {
-//             out += `<img src='${subwayLogo}' class="item-img">`;
-//           } else if (data[key].market === "sfc") {
-//             out += `<img src="${chickenLogo}" class="item-img">`;
-//           } else if (data[key].market === "doner") {
-//             out += `<img src="${donerLogo}" class="item-img">`;
-//           }
-//           out += `<div class="price-boll3">
-//                    <div class="price-boll">
-//                       <img src="${img} "
-//                        class="img" id="${"y" + data[key].id}"> </div></div>
-//                   <div class="text">
-//                       <p class="item-text" id="${"b" + data[key].id}"> ${data[key].name}
-//                       </p> </div>
-//                        <div class="link"> <a href="#" class="item-link"> ${
-//                          data[key].description
-//                        }</a> </div>
-//                       <p class="container-text"> Цена <strong class="price-one" id="${
-//                         "v" + data[key].id
-//                       }">
-//                       ${data[key].price}</strong> руб</p>
-//                   <p class="item-link-text">КОЛИЧЕСТВО</p>
-//                   <div class="counter${+data[key].id}" id="${"123" + data[key].id}">
-//                   </div>
-//                   <button class="edit-button" id=" ${
-//                     data[key].id
-//                   }"> В КОРЗИНУ  </button>
-//                  </div>`;
-//           this.root.innerHTML += out;
-
-//         }
-//       }
-
-//       })
-//       // for (let key in data) {
-//       //   if (
-//       //     data[key].category === this.#state.category
-//       //   ) {
-//       //     const button = new Button(
-//       //       document.getElementById('container').querySelector(`.counter${+data[key].id}`)
-//       //     );
-//       //   }
-
-//     }
-
-//   }
-
-// module.exports = Menu;
-
-// //---------------------------------------------------------------------
-
-// // class Menu {
-// //   constructor(root) {
-// //     this.root = root;
-
-// //     state = {
-// //       list: ["pizza", "bugrers"],
-// //       selectedCategory: "pizza",
-// //     };
-
-// //     this.render();
-// //   }
-
-// //   render() {
-// //     for (category in this.state.list) {
-// //       html += `<span class="menu-item ${
-// //         this.state.selectedCategory === category ? "active" : ""
-// //       }">${category}</span>`;
-// //     }
-// //   }
-// // }

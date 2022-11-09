@@ -1,11 +1,12 @@
 let ModalComponent = require('../modalComponents.js')
 let FillName = require('./modalFillName')
 let BasketModal = require('./basketModal')
+let {ResultPrice} = require('../components/modalResiltPrice')
 
 class ModalWindow {
   root;
   #state = {
-    counter: 1,
+    counter: 0,
   };
 
   set state(newState) {
@@ -15,8 +16,10 @@ class ModalWindow {
 
   constructor(root) {
     this.root = root;
-
+    
+   
     this.render();
+    
   }
 
 
@@ -24,6 +27,7 @@ class ModalWindow {
   render() {
     // removeEventListener
     this.root.innerHTML = "";
+    
     let html = "";
     html = `
        <div class="content__ingredients" href="1">
@@ -42,7 +46,7 @@ class ModalWindow {
 
        </div>
        <footer>
-           <h2 class="footer-text">Итого: <strong id="itog-price">0</strong>руб
+           <h2 class="footer-text">Итого: руб
            </h2>
        </footer>
    </div>
@@ -52,6 +56,7 @@ class ModalWindow {
     new  ModalComponent(document.querySelector('#content__ingredients-price'))
     new FillName(document.querySelector('.categories'))
     new BasketModal()
+    new ResultPrice(document.querySelector('.footer-text'))
   }
 }
 

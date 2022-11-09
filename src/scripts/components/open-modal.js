@@ -1,9 +1,11 @@
-//const { createStore } = require("../reduxFile/redux2");
-const { createStore, applyMiddleware } = require("redux");
-const { default: logger } = require("redux-logger");
+const { createStore } = require("../reduxFile/redux2");
+
 const { activReducer, menuReducer } = require("../reduxFile/rootReducer");
-let menuStore = createStore(menuReducer);
-let store = createStore(activReducer, "fon", applyMiddleware(logger));
+
+const {menuStore} = require('../reduxFile/sore')
+let menuStore2 = createStore(menuReducer);
+let store = createStore(activReducer, "fon");
+const {addModalBasket} = require('../reduxFile/sore')
 class Modal {
   root;
   #state = {
@@ -24,20 +26,26 @@ class Modal {
   }
 
   async modalOpan(e) {
-    let menu = await menuStore.getState();
+    let menu = await menuStore2.getState();
+    
     if (
       e.target.classList.contains("edit-button") &&
-      menu[e.target.id].category === "sandwiches"
+      menuStore.getState() === "sandwiches"
     ) {
+     
       store.dispatch({ type: "active" });
       document.getElementById("fon").className = this.#state.style;
+      addModalBasket.dispatch({type: 'basketElem', payload: menu[e.target.id]})
+      console.log({...addModalBasket.getState()});
     }
+  
   }
 
   modalClose(e) {
     if (e.target.classList.contains("close_modal_window")) {
       store.dispatch({ type: "close" });
       document.getElementById("fon").className = this.#state.style;
+      
     }
   }
 
