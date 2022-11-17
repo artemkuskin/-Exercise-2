@@ -30,6 +30,7 @@ body {
     padding: 10px 9px;
     color: black;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .menu-link:hover {
@@ -80,6 +81,9 @@ body {
     border-color: orange;
     width: 90%;
     margin-left: 10px;
+}
+button {
+    cursor: pointer;
 }
 
 .basket-button {

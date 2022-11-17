@@ -1,10 +1,10 @@
-const { addModalBasket, getModalMenu } = require("../../reduxFile/sore");
+const { addModalBasket, getModalMenu, modalFillNameStore } = require("../../reduxFile/sore");
 const { menuStore, stepStore } = require("../../reduxFile/sore");
 let modalMainMenu = getModalMenu;
 
 export class ResultPrice {
   root;
-  #state = {
+  Sstate = {
     castomSandwichObj: 0,
     arr: [],
     basket: {},
@@ -12,7 +12,7 @@ export class ResultPrice {
   };
 
   set state(newState) {
-    this.#state = newState;
+    this.Sstate = newState;
     this.render();
   }
 
@@ -24,109 +24,112 @@ export class ResultPrice {
     this.render();
   }
 
-  //ревлизовать через сетстайт
+  addListeber() {
+    document.addEventListener("click", this.addElement.bind(this));
+    document.addEventListener("click", this.resultSum.bind(this));
+    document.addEventListener("click", this.displayActive.bind(this));
+    document.addEventListener("click", this.createActive.bind(this));
+    document.addEventListener("click", this.resetActive.bind(this));
+    document.addEventListener("click", this.Price.bind(this));
+  }
+
   Price(e) {
-    let category = menuStore.getState()
-    if (
-      e.target.classList.contains("edit-button") &&
-      category === "sandwiches"
-    ) {
-      this.#state.castomSandwichObj = addModalBasket.getState();
-      this.#state.castomSandwichObj.result =
-        this.#state.castomSandwichObj.price;
+    let category = menuStore.getState().menu;
+    if (e.target.classList.contains("edit-button") && category === "sandwiches") {
+      this.Sstate.castomSandwichObj = modalFillNameStore.getState().modalBasket;
+      this.Sstate.castomSandwichObj.result = this.Sstate.castomSandwichObj.price;
       this.render();
     }
   }
 
-  addListeber() {
-    document.addEventListener("click", this.resultSum.bind(this));
-    document.addEventListener("click", this.createActive.bind(this));
-    document.addEventListener("click", this.displayActive.bind(this));
-    document.addEventListener("click", this.resetActive.bind(this));
-    document.addEventListener("click", this.Price.bind(this));
-    document.addEventListener("click", this.addElement.bind(this));
-  }
-
   async resultSum(e) {
     const menu = await modalMainMenu.getState();
-    const basketModalObj = this.#state.castomSandwichObj;
-    let sum = 0;
+    const basketModalObj = this.Sstate.castomSandwichObj;
+    let arr = this.Sstate.arr;
+    let obj = {};
     const components = basketModalObj.components;
+    let sum = 0;
 
     if (e.target.classList.contains("ingredients-small")) {
-      this.#state.arr = [];
-      for (let key in components) {
-        if (menu[components[key]]) {
-          this.#state.arr.push({
-            obj: {
+      if (!document.querySelector(".active")) {
+        this.Sstate.arr = [];
+        for (let key in components) {
+          if (menu[components[key]]) {
+            (obj = {
               id: menu[components[key]].id,
               category: menu[components[key]].category,
-            },
-          });
-
-          sum += menu[components[key]].price;
+            }),
+              (sum += menu[components[key]].price);
+            this.Sstate.arr.push(obj);
+          }
+        }
+        obj = {};
+      } else {
+        for (let key in arr) {
+          if (arr[key].id === menu[e.target.id].id) {
+            arr.splice([key], 1);
+            this.Sstate.castomSandwichObj.components[menu[e.target.id].category] = undefined;
+            console.log(menu[e.target.id].id);
+          }
         }
       }
-      let res = this.#state.castomSandwichObj.price + sum;
-      this.#state.castomSandwichObj.result = res;
+      let res = this.Sstate.castomSandwichObj.price + sum;
+      this.Sstate.castomSandwichObj.result = res;
+      console.log(this.Sstate);
     }
     this.render();
   }
 
   async addElement(e) {
-    let basket = addModalBasket.getState();
-    this.#state.basket = basket;
+    let basket = modalFillNameStore.getState().modalBasket;
+    this.Sstate.basket = basket;
     let menu = await modalMainMenu.getState();
+    let veget = [];
     if (e.target.classList.contains("ingredients-small")) {
       if (menu[e.target.id].category === "sizes") {
-        basket.components.size = e.target.id;
+        basket.components.sizes = e.target.id;
       } else if (menu[e.target.id].category === "breads") {
-        basket.components.bread = e.target.id;
+        basket.components.breads = e.target.id;
       } else if (menu[e.target.id].category === "vegetables") {
-        basket.components.vegetable = e.target.id;
+        basket.components.vegetables = e.target.id;
       } else if (menu[e.target.id].category === "sauces") {
-        basket.components.sauce = e.target.id;
+        basket.components.sauces = e.target.id;
       } else if (menu[e.target.id].category === "fillings") {
-        basket.components.filling = e.target.id;
+        basket.components.fillings = e.target.id;
       }
     }
   }
 
   createActive(e) {
-    let arr = this.#state.arr;
+    let arr = this.Sstate.arr;
     if (
       e.target.classList.contains("content__ingredients-button-next") ||
       e.target.classList.contains("content__ingredients-button-next-back")
     ) {
       for (let key in arr) {
-        if (arr[key].obj.category === stepStore.getState()) {
-          document.getElementById(arr[key].obj.id).className = "active";
+        if (arr[key].category === menuStore.getState().modal) {
+          document.getElementById(arr[key].id).className = "active";
         }
+        console.log(arr);
       }
     }
   }
 
   async displayActive(e) {
     let menu = await modalMainMenu.getState();
-    let arr = this.#state.arr;
     if (e.target.classList.contains("ingredients-small")) {
       if (!document.querySelector(".active")) {
-        for (let key in arr) {
-          document.getElementById(menu[e.target.id].id).className = "active";
-        }
-      } else {
-        document.querySelector(".active").className = "price-popup";
         document.getElementById(menu[e.target.id].id).className = "active";
+      } else if (document.querySelector(".active")) {
+        document.querySelector(".active").className = "price-popup";
       }
+      console.log(this.Sstate.arr);
     }
   }
 
   resetActive(e) {
-    if (
-      e.target.classList.contains("edit-button-modal") ||
-      e.target.classList.contains("close_modal_window")
-    ) {
-      this.#state.arr = [];
+    if (e.target.classList.contains("edit-button-modal") || e.target.classList.contains("close_modal_window")) {
+      this.Sstate.arr = [];
     }
   }
 
@@ -135,9 +138,7 @@ export class ResultPrice {
     this.root.innerHTML = "";
     let html = "";
     html = `
-       <strong id="itog-price">Итого: ${
-         this.#state.castomSandwichObj.result
-       } руб</strong>
+       <strong id="itog-price">Итого: ${this.Sstate.castomSandwichObj.result} руб</strong>
           `;
     this.root.innerHTML = html;
   }

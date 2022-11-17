@@ -90,6 +90,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    cursor: pointer;
 }
 
 .content__ingredients-button-next {
@@ -100,6 +101,7 @@ footer {
     width: 115px;
     height: 33px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .content__ingredients-button-next-back {
@@ -109,7 +111,8 @@ footer {
     color: white;
     width: 115px;
     height: 33px;
-    border-radius: 10px
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .content__ingredients-button-next:hover {

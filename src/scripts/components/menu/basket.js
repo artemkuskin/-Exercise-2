@@ -1,5 +1,6 @@
 const basketImg = require("../../../i/basketImg/basket.png");
-const { menuStore, addModalBasket, addBasketStore, getMenu, getModalMenu } = require("../../reduxFile/sore");
+const pubsub = require("../../pubSub/pubsub");
+const { menuStore, addModalBasket, addBasketStore, getMenu, getModalMenu, idStore, modalFillNameStore } = require("../../reduxFile/sore");
 const store = getMenu;
 
 class Busket {
@@ -19,9 +20,13 @@ class Busket {
 
     this.render();
     this.addListeners();
+
+   // pubsub.subscribe('adDTo...', this.addBasket)
   }
 
   addListeners() {
+   // let id = idStore.getState()
+   // let btn = document.querySelector(`#asd${id}`)
     document.addEventListener("click", this.addComponent.bind(this));
     document.addEventListener("click", this.deleteElem.bind(this));
     document.addEventListener("click", this.addBasket.bind(this));
@@ -31,9 +36,11 @@ class Busket {
     menu = await store.getState();
     basketArr = addBasketStore.getState();
     basketElem = this.#state;
-    id = e.target.id;
+    //id = idStore.getState();
+    let id = modalFillNameStore.getState().id
 
-    if (e.target.classList.contains("edit-button") && menuStore.getState() !== "sandwiches") {
+    if (e.target.classList.contains("edit-button") && menuStore.getState().menu !== "sandwiches") {
+     // console.log(idStore.getState());
       if (document.getElementById("idBasket" + menu[id].id)) {
         for (let key in basketArr.elem) {
           if (basketArr.elem[key].id === menu[id].id) {
@@ -56,23 +63,26 @@ class Busket {
     }
   }
 
+  // { id: ... }
   async addBasket(e) {
-    let basketModal = addModalBasket.getState();
+    let basketModal = modalFillNameStore.getState().modalBasket;
+    // 
     const menu = await getModalMenu.getState();
     let menu2 = await store.getState();
     basketElem = this.#state;
+    let id = modalFillNameStore.getState().id
     if (e.target.classList.contains("edit-button-modal")) {
-      (basketElem.name = basketModal.name),
-        (basketElem.amount = menu2[e.target.id].count),
-        (basketElem.price = basketModal.result),
-        basketElem.id = e.target.id,
-        (basketElem.components = {
-          size: menu[basketModal.components.size]?.name,
-          bread: menu[basketModal.components.bread]?.name,
-          sauce: menu[basketModal.components.sauce]?.name,
-          filling: menu[basketModal.components.filling]?.name,
-          vegetable: menu[basketModal.components.vegetable]?.name,
-        });
+      basketElem.name = basketModal.name;
+      basketElem.amount = menu2[id].count;
+      basketElem.price = basketModal.result;
+      basketElem.id = id;
+      basketElem.components = {
+        size: menu[basketModal.components.sizes]?.name,
+        bread: menu[basketModal.components.breads]?.name,
+        sauce: menu[basketModal.components.sauces]?.name,
+        filling: menu[basketModal.components.fillings]?.name,
+        vegetable: menu[basketModal.components.vegetables]?.name,
+      };
       addBasketStore.dispatch({
         type: "addBasket",
         payload: { ...basketElem },

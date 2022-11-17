@@ -1,4 +1,5 @@
-const { menuStore, menuCategoryStore } = require("../../reduxFile/sore");
+const pubsub = require("../../pubSub/pubsub");
+const { menuStore } = require("../../reduxFile/sore");
 
 class MainMenu {
   root;
@@ -19,20 +20,22 @@ class MainMenu {
   }
 
   addListeners() {
+    let category = menuStore.getState().menu
     document.addEventListener("click", function (e) {
       if (e.target.classList.contains("menu-link")) menuStore.dispatch({ type: e.target.id });
     });
   }
 
   render() {
-    this.#state.list = menuCategoryStore.getState();
-
-    for (category in this.#state.list) {
-      const html = `
-      <p class="menu-link"  id="${this.#state.list[category]}">${this.#state.list[category].toUpperCase()}</p>
-          `;
-      this.root.innerHTML += html;
-    }
+    pubsub.subscribe("category", (data) => {
+      this.#state.list = data.categoryMenu;
+      for (category in this.#state.list) {
+        const html = `
+        <p class="menu-link"  id="${this.#state.list[category]}">${this.#state.list[category].toUpperCase()}</p>
+            `;
+        this.root.innerHTML += html;
+      }
+    });
   }
 }
 

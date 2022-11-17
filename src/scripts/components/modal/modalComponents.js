@@ -1,4 +1,4 @@
-const { stepStore, getModalMenu } = require("../../reduxFile/sore");
+const { stepStore, getModalMenu, menuStore, modalFillNameStore } = require("../../reduxFile/sore");
 const { addModalBasket } = require("../../reduxFile/sore");
 class ModalComponent {
   root;
@@ -18,7 +18,8 @@ class ModalComponent {
     this.root = root;
     this.addListeners();
     this.render();
-    stepStore.subscribe(this.render.bind(this));
+    let category = menuStore.getState()
+    menuStore.subscribe(this.render.bind(this));
   }
 
   addListeners() {
@@ -50,8 +51,8 @@ class ModalComponent {
     // removeEventListener
 
     this.#state.menu = await getModalMenu.getState();
-    this.#state.category = stepStore.getState();
-    this.#state.result = addModalBasket.getState();
+    this.#state.category = menuStore.getState().modal;
+    this.#state.result = modalFillNameStore.getState().modalBasket;
     let modalMenu = await getModalMenu.getState();
     let module = this.#state.menu;
     let result = this.#state.result;
@@ -87,21 +88,21 @@ class ModalComponent {
         <div class="content__ingredients-price-itog">
         <h1 class="title-itog">Ваш сендвич готов</h4>
         <p>Размер:<strong id='sizes-name' class='-1'>${
-          modalMenu[result.components.size] === undefined ? "15см" : modalMenu[result.components.size].name
+          modalMenu[result.components.sizes] === undefined ? "15см" : modalMenu[result.components.sizes].name
         }</strong></p>
         <p>Хлеб:<strong id='breads-name'  class='-1'>${
-          modalMenu[result.components.bread] === undefined
+          modalMenu[result.components.breads] === undefined
             ? "Белый итальянский"
-            : modalMenu[result.components.bread].name
+            : modalMenu[result.components.breads].name
         }</strong></p>
         <p>Овощи:<strong id='veget-name'  class='-1'>${
-          modalMenu[result.components.vegetable] === undefined ? "Нет" : modalMenu[result.components.vegetable].name
+          modalMenu[result.components.vegetables] === undefined ? "Нет" : modalMenu[result.components.vegetables].name
         }</strong></p>
         <p>Соусы:<strong id='sous-name'  class='-1'>${
-          modalMenu[result.components.sauce] === undefined ? "Нет" : modalMenu[result.components.sauce].name
+          modalMenu[result.components.sauces] === undefined ? "Нет" : modalMenu[result.components.sauces].name
         }</strong></p>
         <p>Начинка:<strong id="fill-name"  class="-1">${
-          modalMenu[result.components.filling] === undefined ? "Нет" : modalMenu[result.components.filling].name
+          modalMenu[result.components.fillings] === undefined ? "Нет" : modalMenu[result.components.fillings].name
         }</strong></p>
         
         <h3 id="name">${result.name}</h3>

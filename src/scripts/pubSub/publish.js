@@ -3,14 +3,21 @@ module.exports = {
    publishEvent() {
         
         const data = {
-           active: 'active',
-           noActive: 'price-popup'
-        };
+        categoryMenu : [
+            "pizza",
+            "burgers",
+            "sandwiches",
+            "shaurma",
+            "chicken",
+            "salads",
+            "drinks",
+          ],
+         }
 
 
-      pubSub.publish("active", data);
+      pubSub.publish("category", data);
     
     }
-
+   
 
 }

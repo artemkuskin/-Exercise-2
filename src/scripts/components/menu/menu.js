@@ -1,7 +1,8 @@
 const subwayLogo = require("../../../i/img/subway.png");
 const donerLogo = require("../../../i/img/doner.png");
 const chickenLogo = require("../../../i/img/south_fried_chicken.png");
-const { menuStore, getMenu } = require("../../reduxFile/sore");
+const { menuStore, getMenu, stepStore, idStore, modalFillNameStore } = require("../../reduxFile/sore");
+const pubsub = require("../../pubSub/pubsub");
 const menuStore2 = getMenu;
 
 class Menu {
@@ -21,11 +22,28 @@ class Menu {
 
   constructor(root) {
     this.root = root;
+     this.addListeners();
+    this.render();
+    let category = menuStore.getState().menu
+    menuStore.subscribe(this.render.bind(this));
+  }
+
+  addListeners() {
     document.addEventListener("click", this.increment.bind(this));
     document.addEventListener("click", this.decrement.bind(this));
-    this.render();
+    // btn.addEventListener('click', function () {
+    //   console.log(menu[]);
+    // })
 
-    menuStore.subscribe(this.render.bind(this));
+    // перебираем все продукты (product-* btn), на каждом на кнопку вешаем листенер, который будет в пейлоаде слать инфу о продукте
+
+    // (product-0Button).addEventListener('click', () => {
+    //   setSelectedProductInStore({ id: product.id });
+
+    //   // OR
+
+    //   pubsub.emit('addProductToBasket', { id: product.id })
+    // })
   }
 
   async increment(e) {
@@ -47,7 +65,7 @@ class Menu {
   }
 
   async render() {
-    this.#state.category = menuStore.getState();
+    this.#state.category = menuStore.getState().menu;
     const menu = await menuStore2.getState();
 
     this.root.innerHTML = "";
@@ -59,7 +77,7 @@ class Menu {
       let out = "";
 
       if (menu[key].category === this.#state.category) {
-        out += `<div class="products" id= ${menu[key].id + 111} >`;
+        out += `<div class="products" id="product-${menu[key].id}">`;
         if (menu[key].market === "subway") {
           out += `<img src='${subwayLogo}' class="item-img">`;
         } else if (menu[key].market === "sfc") {
@@ -79,14 +97,23 @@ class Menu {
                       ${menu[key].price}</strong> руб</p> 
                   <p class="item-link-text">КОЛИЧЕСТВО</p>
                   <div id="${key * 1000}">
-                  <button class="increase" id=${key}> + </button>
+                  <button class="increase" id='${key}'> + </button>
                   <input type="number"  value='${menu[key].count}' class="input" readonly>
-                  <button class ="decrease" id=${key}> - </button>
+                  <button class ="decrease" id='${key}'> - </button>
                   
                   </div>
-                  <button class="edit-button" id="${[key]}"> В КОРЗИНУ  </button> 
+                  <button class="edit-button" id="button${[key]}"> В КОРЗИНУ  </button> 
                  </div>`;
         this.root.innerHTML += out;
+      }
+    }
+    for (let key in menu) {
+      if (document.querySelector(`#button${key}`)) {
+        let btn = this.root.querySelector(`#button${key}`);
+        btn.addEventListener("click", function () {
+          modalFillNameStore.dispatch({ type: "addId", payload: key });
+          console.log(key, ">>>>>>>>>>");
+        });
       }
     }
   }

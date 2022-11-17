@@ -1,12 +1,7 @@
-const { menuStore, getMenu } = require("../../reduxFile/sore");
-const {
-  addModalBasket,
-  stepStore,
-  counterCategoryStore,
-  activeStore,
-} = require("../../reduxFile/sore");
+const { menuStore, getMenu, modalFillNameStore } = require("../../reduxFile/sore");
+const { addModalBasket, stepStore, counterCategoryStore, activeStore } = require("../../reduxFile/sore");
 const getMainMenu = getMenu;
-let store = activeStore;
+let store = modalFillNameStore;
 class Modal {
   root;
   #state = {
@@ -22,42 +17,44 @@ class Modal {
 
   constructor(root) {
     this.root = root;
-    document.addEventListener("click", this.modalOpan.bind(this));
-    document.addEventListener("click", this.modalClose.bind(this));
-    document.addEventListener("click", this.addBasketAndModalCloce.bind(this));
+    this.addListeners()
     store.subscribe(this.render.bind(this));
     this.render();
   }
 
+  addListeners () {
+    document.addEventListener("click", this.modalOpan.bind(this));
+    document.addEventListener("click", this.modalClose.bind(this));
+    document.addEventListener("click", this.addBasketAndModalCloce.bind(this))
+  }
+
   async modalOpan(e) {
     const menu = await getMainMenu.getState();
-    this.#state.category = menuStore.getState();
+    this.#state.category = menuStore.getState().menu;
+    let id = modalFillNameStore.getState().id
 
-    if (
-      e.target.classList.contains("edit-button") &&
-      this.#state.category === "sandwiches"
-    ) {
-      console.log(counterCategoryStore.getState());
+    if (e.target.classList.contains("edit-button") && this.#state.category === "sandwiches") {
+      //console.log(counterCategoryStore.getState());
       store.dispatch({ type: "active" });
 
       document.getElementById("fon").className = this.#state.style;
-      addModalBasket.dispatch({
+      store.dispatch({
         type: "basketElem",
-        payload: menu[e.target.id],
+        payload: menu[id],
       });
-      stepStore.dispatch({ type: "sizes" });
+      menuStore.dispatch({ type: "sizes" });
       if (document.querySelector(".step")) {
         document.querySelector(".step").className = "categories-link";
       }
-      document.getElementById(stepStore.getState()).className = "step";
-      console.log({ ...addModalBasket.getState() });
+      document.getElementById(menuStore.getState().modal).className = "step";
+      console.log({ ...store.getState().modalBasket });
     }
   }
 
   modalClose(e) {
     if (e.target.classList.contains("close_modal_window")) {
       store.dispatch({ type: "close" });
-      counterCategoryStore.dispatch({ type: "counter", payload: 0 });
+      store.dispatch({ type: "counter", payload: 0 });
       document.getElementById("fon").className = this.#state.style;
     }
   }
@@ -66,12 +63,12 @@ class Modal {
     if (e.target.classList.contains("edit-button-modal")) {
       store.dispatch({ type: "close" });
       document.getElementById("fon").className = this.#state.style;
-      counterCategoryStore.dispatch({ type: "counter", payload: 0 });
+      store.dispatch({ type: "counter", payload: 0 });
     }
   }
 
   render() {
-    this.#state.style = store.getState();
+    this.#state.style = store.getState().open;
   }
 }
 
