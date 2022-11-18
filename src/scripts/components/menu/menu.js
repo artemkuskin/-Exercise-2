@@ -1,9 +1,10 @@
 const subwayLogo = require("../../../i/img/subway.png");
 const donerLogo = require("../../../i/img/doner.png");
 const chickenLogo = require("../../../i/img/south_fried_chicken.png");
-const { menuStore, getMenu, stepStore, idStore, modalFillNameStore } = require("../../reduxFile/sore");
+const { menuStore, getMenu, stepStore, idStore, modalFillNameStore, addBasketStore } = require("../../reduxFile/sore");
 const pubsub = require("../../pubSub/pubsub");
 const menuStore2 = getMenu;
+let activeModal = modalFillNameStore;
 
 class Menu {
   root;
@@ -12,6 +13,7 @@ class Menu {
     category: "",
     menu: "",
     amount: 1,
+    obj: {},
   };
 
   set state(newState) {
@@ -22,15 +24,16 @@ class Menu {
 
   constructor(root) {
     this.root = root;
-     this.addListeners();
+    this.addListeners();
     this.render();
-    let category = menuStore.getState().menu
+    let category = menuStore.getState().menu;
     menuStore.subscribe(this.render.bind(this));
   }
 
   addListeners() {
     document.addEventListener("click", this.increment.bind(this));
     document.addEventListener("click", this.decrement.bind(this));
+
     // btn.addEventListener('click', function () {
     //   console.log(menu[]);
     // })
@@ -67,7 +70,7 @@ class Menu {
   async render() {
     this.#state.category = menuStore.getState().menu;
     const menu = await menuStore2.getState();
-
+    // let style = activeModal.getState().open;
     this.root.innerHTML = "";
 
     for (let key in menu) {
@@ -108,11 +111,54 @@ class Menu {
       }
     }
     for (let key in menu) {
-      if (document.querySelector(`#button${key}`)) {
-        let btn = this.root.querySelector(`#button${key}`);
-        btn.addEventListener("click", function () {
-          modalFillNameStore.dispatch({ type: "addId", payload: key });
-          console.log(key, ">>>>>>>>>>");
+      let btn = this.root.querySelector(`#button${key}`);
+      if (btn) {
+        let menu = await menuStore2.getState();
+        basketArr = addBasketStore.getState();
+        basketElem = this.#state.obj;
+        let style = activeModal.getState().open;
+
+        //id = idStore.getState();
+        let id = modalFillNameStore.getState().id;
+
+        btn.addEventListener("click", async function () {
+          
+          if (menuStore.getState().menu !== "sandwiches") {
+            modalFillNameStore.dispatch({ type: "addId", payload: key });
+            console.log(id);
+            if (document.getElementById("idBasket" + menu[key].id)) {
+              for (let key2 in basketArr.elem) {
+                if (basketArr.elem[key2].id === menu[key].id) {
+                  basketArr.elem[key2].amount = parseInt(basketArr.elem[key2].amount) + parseInt(menu[key].count);
+                  console.log(basketArr);
+                  //this.text();
+                  addBasketStore.dispatch({
+                    type: "asd",
+                  });
+                }
+              }
+            } else {
+              const product = {
+                name: menu[key].name,
+                amount: parseInt(menu[key].count),
+                id: menu[key].id,
+                price: menu[key].price,
+              };
+              addBasketStore.dispatch({
+                type: "addBasket",
+                payload: product,
+              });
+              
+            }
+            console.log(basketArr);
+          } else {
+            activeModal.dispatch({ type: "active", payload: menu[key] });
+            activeModal.dispatch({
+              type: "basketElem",
+              payload: menu[key],
+            });
+            menuStore.dispatch({ type: "sizes" });
+          }
         });
       }
     }

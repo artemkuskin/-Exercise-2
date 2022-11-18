@@ -27,70 +27,72 @@ class Busket {
   addListeners() {
    // let id = idStore.getState()
    // let btn = document.querySelector(`#asd${id}`)
-    document.addEventListener("click", this.addComponent.bind(this));
-    document.addEventListener("click", this.deleteElem.bind(this));
-    document.addEventListener("click", this.addBasket.bind(this));
+   let id = modalFillNameStore.getState().id
+   let targetElem = document.querySelector(`#button${id}`)
+    //document.addEventListener("click", this.addComponent.bind(this));
+   //document.addEventListener("click", this.deleteElem.bind(this));
+    //document.addEventListener("click", this.addBasket.bind(this));
   }
 
-  async addComponent(e) {
-    menu = await store.getState();
-    basketArr = addBasketStore.getState();
-    basketElem = this.#state;
-    //id = idStore.getState();
-    let id = modalFillNameStore.getState().id
+  // async addComponent() {
+  //   menu = await store.getState();
+  //   basketArr = addBasketStore.getState();
+  //   basketElem = this.#state;
+  //   //id = idStore.getState();
+  //   let id = modalFillNameStore.getState().id
 
-    if (e.target.classList.contains("edit-button") && menuStore.getState().menu !== "sandwiches") {
-     // console.log(idStore.getState());
-      if (document.getElementById("idBasket" + menu[id].id)) {
-        for (let key in basketArr.elem) {
-          if (basketArr.elem[key].id === menu[id].id) {
-            basketArr.elem[key].amount = parseInt(basketArr.elem[key].amount) + parseInt(menu[id].count);
+  //   if (menuStore.getState().menu !== "sandwiches") {
+  //    // console.log(idStore.getState());
+  //     if (document.getElementById("idBasket" + menu[id].id)) {
+  //       for (let key in basketArr.elem) {
+  //         if (basketArr.elem[key].id === menu[id].id) {
+  //           basketArr.elem[key].amount = parseInt(basketArr.elem[key].amount) + parseInt(menu[id].count);
 
-            this.text();
-          }
-        }
-      } else {
-        basketElem.name = menu[id].name;
-        basketElem.amount = parseInt(menu[id].count);
-        basketElem.id = menu[id].id;
-        basketElem.price = menu[id].price;
-        addBasketStore.dispatch({
-          type: "addBasket",
-          payload: { ...basketElem },
-        });
-      }
-      this.resultSum();
-    }
-  }
+  //           this.text();
+  //         }
+  //       }
+  //     } else {
+  //       basketElem.name = menu[id].name;
+  //       basketElem.amount = parseInt(menu[id].count);
+  //       basketElem.id = menu[id].id;
+  //       basketElem.price = menu[id].price;
+  //       addBasketStore.dispatch({
+  //         type: "addBasket",
+  //         payload: { ...basketElem },
+  //       });
+  //     }
+  //     this.resultSum();
+  //   }
+  // }
 
-  // { id: ... }
-  async addBasket(e) {
-    let basketModal = modalFillNameStore.getState().modalBasket;
-    // 
-    const menu = await getModalMenu.getState();
-    let menu2 = await store.getState();
-    basketElem = this.#state;
-    let id = modalFillNameStore.getState().id
-    if (e.target.classList.contains("edit-button-modal")) {
-      basketElem.name = basketModal.name;
-      basketElem.amount = menu2[id].count;
-      basketElem.price = basketModal.result;
-      basketElem.id = id;
-      basketElem.components = {
-        size: menu[basketModal.components.sizes]?.name,
-        bread: menu[basketModal.components.breads]?.name,
-        sauce: menu[basketModal.components.sauces]?.name,
-        filling: menu[basketModal.components.fillings]?.name,
-        vegetable: menu[basketModal.components.vegetables]?.name,
-      };
-      addBasketStore.dispatch({
-        type: "addBasket",
-        payload: { ...basketElem },
-      });
-      this.render();
-      this.resultSum();
-    }
-  }
+  // // { id: ... }
+  // async addBasket(e) {
+  //   let basketModal = modalFillNameStore.getState().modalBasket;
+  //   // 
+  //   const menu = await getModalMenu.getState();
+  //   let menu2 = await store.getState();
+  //   basketElem = this.#state;
+  //   let id = modalFillNameStore.getState().id
+  //   if (e.target.classList.contains("edit-button-modal")) {
+  //     basketElem.name = basketModal.name;
+  //     basketElem.amount = menu2[id].count;
+  //     basketElem.price = basketModal.result;
+  //     basketElem.id = id;
+  //     basketElem.components = {
+  //       size: menu[basketModal.components.sizes]?.name,
+  //       bread: menu[basketModal.components.breads]?.name,
+  //       sauce: menu[basketModal.components.sauces]?.name,
+  //       filling: menu[basketModal.components.fillings]?.name,
+  //       vegetable: menu[basketModal.components.vegetables]?.name,
+  //     };
+  //     addBasketStore.dispatch({
+  //       type: "addBasket",
+  //       payload: { ...basketElem },
+  //     });
+  //     this.render();
+  //     this.resultSum();
+  //   }
+  // }
 
   resultSum() {
     basketArr = addBasketStore.getState().elem;
@@ -106,32 +108,34 @@ class Busket {
     return html;
   }
 
-  deleteElem(e) {
-    const basketArr = addBasketStore.getState().elem;
-    id = e.target.id;
-    if (e.target.classList.contains("idBasketButton")) {
-      document.getElementById("idBasket" + id + "Parent").remove();
-      for (let key in basketArr) {
-        if (basketArr[key].id === id) basketArr.splice([key], 1);
-      }
-      console.log(basketArr);
-      this.resultSum();
-    }
-  }
+  // deleteElem(e) {
+  //   const basketArr = addBasketStore.getState().elem;
+  //   id = e.target.id;
+  //   if (e.target.classList.contains("idBasketButton")) {
+  //     document.getElementById("idBasket" + id + "Parent").remove();
+  //     for (let key in basketArr) {
+  //       if (basketArr[key].id === id) basketArr.splice([key], 1);
+  //     }
+  //     console.log(basketArr);
+  //     this.resultSum();
+  //   }
+  // }
 
-  text() {
+  basketElem() {
     let html = "";
     basketArr = addBasketStore.getState();
     for (let key in basketArr.elem) {
       html += ` <div class='basketElem' id='idBasket${basketArr.elem[key].id}Parent'><p class='product-name' id="idBasket${basketArr.elem[key].id}">${basketArr.elem[key].name} - ${basketArr.elem[key].amount}</p>
-      <button id="${basketArr.elem[key].id}" class='idBasketButton'>X</button></div>`;
+      <button id="idBasketButton${basketArr.elem[key].id}" class='idBasketButton'>X</button></div>`;
       document.getElementById("counter-text").innerHTML = html;
+
     }
     return html;
   }
 
   render() {
     const basketArr = addBasketStore.getState();
+    let sum = addBasketStore.getState().sum
     console.log(basketArr);
     this.root.innerHTML = "";
     let html = "";
@@ -151,11 +155,21 @@ class Busket {
             <div id="counter-text"></div>
           </div>
         </div>
-        <p id='result-sum'>Итого:${this.sum} Руб</p>
+        <p id='result-sum'>Итого:${sum} Руб</p>
         <button class="basket-button">ОФОРМИТЬ ЗАКАЗ</button>
 `;
     this.root.innerHTML = html;
-    this.text();
+    this.basketElem();
+    for (let key in basketArr.elem) {
+      let deleteBtm = document.querySelector(`#idBasketButton${basketArr.elem[key].id}`)
+      let id = basketArr.elem[key].id
+      deleteBtm.addEventListener('click', function() {
+        document.getElementById("idBasket" + id + "Parent").remove();
+        if (basketArr.elem[key].id){
+          addBasketStore.dispatch({type: 'deleteElem', payload: key}) 
+        }
+      })
+    }
   }
 }
 

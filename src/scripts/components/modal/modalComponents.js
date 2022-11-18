@@ -1,5 +1,14 @@
-const { stepStore, getModalMenu, menuStore, modalFillNameStore } = require("../../reduxFile/sore");
+const {
+  stepStore,
+  getModalMenu,
+  menuStore,
+  modalFillNameStore,
+  getMenu,
+  addBasketStore,
+} = require("../../reduxFile/sore");
 const { addModalBasket } = require("../../reduxFile/sore");
+let store = getMenu;
+let modalOpan = modalFillNameStore;
 class ModalComponent {
   root;
   #state = {
@@ -7,6 +16,7 @@ class ModalComponent {
     category: "",
     list: [],
     result: {},
+    obj: {},
   };
 
   set state(newState) {
@@ -18,13 +28,44 @@ class ModalComponent {
     this.root = root;
     this.addListeners();
     this.render();
-    let category = menuStore.getState()
+    let category = menuStore.getState();
     menuStore.subscribe(this.render.bind(this));
   }
 
   addListeners() {
     document.addEventListener("click", this.increment.bind(this));
     document.addEventListener("click", this.decrement.bind(this));
+    let btn = document.querySelector(".edit-button-modal");
+    // if (btn) {
+
+    //   btn.addEventListener('click', this.addBasket.bind(this))
+    // }
+  }
+
+  async addBasket(e) {
+    let basketModal = modalFillNameStore.getState().modalBasket;
+    const menu = await getModalMenu.getState();
+    let menu2 = await store.getState();
+    basketElem = this.#state.obj;
+    let id = modalFillNameStore.getState().id;
+    if (e.target.classList.contains("edit-button-modal")) {
+      // basketElem.name = basketModal.name;
+      // basketElem.amount = menu2[id].count;
+      // basketElem.price = basketModal.result;
+      // basketElem.id = id;
+      // basketElem.components = {
+      //   size: menu[basketModal.components.sizes]?.name,
+      //   bread: menu[basketModal.components.breads]?.name,
+      //   sauce: menu[basketModal.components.sauces]?.name,
+      //   filling: menu[basketModal.components.fillings]?.name,
+      //   vegetable: menu[basketModal.components.vegetables]?.name,
+      // };
+      // addBasketStore.dispatch({
+      //   type: "addBasket",
+      //   payload: { ...basketElem },
+      // });
+      // console.log(1);
+    }
   }
 
   increment(e) {
@@ -56,6 +97,12 @@ class ModalComponent {
     let modalMenu = await getModalMenu.getState();
     let module = this.#state.menu;
     let result = this.#state.result;
+    let basketModal = modalFillNameStore.getState().modalBasket;
+    const menu = await getModalMenu.getState();
+    let menu2 = await store.getState();
+    let basketElem = this.#state.obj;
+    let id = modalFillNameStore.getState().id;
+
     this.root.innerHTML = "";
 
     for (let key in module) {
@@ -113,6 +160,38 @@ class ModalComponent {
         <button class="edit-button-modal" id=${result.id}>В КОРЗИНУ</button></div>
         `;
         this.root.innerHTML = html;
+        let btn = document.querySelector(".edit-button-modal");
+        // let closeBtn = document.querySelector('.close_modal_window')
+        btn.addEventListener("click", function () {
+          basketElem.name = basketModal.name;
+          basketElem.amount = menu2[id].count;
+          basketElem.price = basketModal.result;
+          basketElem.id = id;
+          basketElem.components = {
+            size: menu[basketModal.components.sizes]?.name,
+            bread: menu[basketModal.components.breads]?.name,
+            sauce: menu[basketModal.components.sauces]?.name,
+            filling: menu[basketModal.components.fillings]?.name,
+            vegetable: menu[basketModal.components.vegetables]?.name,
+          };
+          addBasketStore.dispatch({
+            type: "addBasket",
+            payload: { ...basketElem },
+          });
+          modalOpan.dispatch({ type: "close" });
+        });
+        btn.addEventListener("click", function () {
+          let style = modalOpan.getState().open.style;
+          document.getElementById("fon").className = style;
+          modalOpan.dispatch({ type: "counter", payload: 0 });
+        });
+    //     closeBtn.addEventListener('click', function() {
+    //       let style = modalOpan.getState().open;
+    //       modalOpan.dispatch({ type: "close" });
+    //   modalOpan.dispatch({ type: "counter", payload: 0 });
+    //   document.getElementById("fon").className = style;
+    //  console.log(1);
+    //    })
       }
     }
   }

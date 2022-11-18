@@ -12,6 +12,7 @@ const initState = ["sizes", "breads", "vegetables", "sauces", "fillings", "resul
 const activeReducer = (state = 'fon', action) => {
   switch (action.type) {
     case "active":
+      console.log(action);
       return (state = "modalActive");
     case "close":
       return (state = "fon");
