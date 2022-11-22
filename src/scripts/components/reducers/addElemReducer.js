@@ -1,9 +1,11 @@
+import { combineReducers } from "redux";
+
 const defaultState = {
   elem: [],
   sum: 0,
 };
 
-export const addElemReducer = (state = defaultState, action) => {
+ const addElemReducer2 = (state = defaultState, action) => {
   
   switch (action.type) {
     case "addBasket":
@@ -12,12 +14,24 @@ export const addElemReducer = (state = defaultState, action) => {
       return { ...newState, sum };
       case 'deleteElem':
       state.elem.splice(action.payload, 1)
-      const sum2 = state.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
-        return {...state, sum2}
+        return {...state}
     default:
       return state;
   }
 };
+const itogSum = (state = 0, action) => {
+  switch (action.type) {
+    case 'addSum':
+      return (state = action.payload);
+    default:
+      return state;
+  }
+}
+
+export const addElemReducer = combineReducers ({
+  arr: addElemReducer2,
+  sum: itogSum
+})
 
 
 // https://redux.js.org/usage/structuring-reducers/refactoring-reducer-example

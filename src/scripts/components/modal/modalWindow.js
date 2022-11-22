@@ -1,14 +1,17 @@
+
 const { modalFillNameStore, getMenu, menuStore } = require("../../reduxFile/sore");
 let ModalComponent = require("./modalComponents");
 let FillName = require("./modalFillName");
-let { ResultPrice } = require("./modalResiltPrice");
+let ResultPrice = require('./modalResiltPrice')
 let modalOpan = modalFillNameStore;
-const menuStore2 = getMenu;
 
 class ModalWindow {
   root;
+  contant;
   #state = {
     counter: 0,
+    list: [],
+    sum: 0
   };
 
   set state(newState) {
@@ -16,37 +19,16 @@ class ModalWindow {
     this.render();
   }
 
-  constructor(root) {
+  constructor(root, contant) {
+    this.contant = contant
     this.root = root;
-
     this.render();
-    modalFillNameStore.subscribe( async()  => {
-      let activeModal = modalFillNameStore
-      console.log(activeModal.getState().open);
-      let style = activeModal.getState().open;
-      document.getElementById("fon").className = style
-            if (document.querySelector(".step")) {
-              document.querySelector(".step").className = "categories-link";
-            }
-            document.getElementById(menuStore.getState().modal).className = "step";
-    })
-
-    // document.getElementById("fon").className = style;
-   // // activeModal.dispatch({
-   ////   type: "basketElem",
-   // //   payload: payload,
-    // });
-    // menuStore.dispatch({ type: "sizes" });
-    // if (document.querySelector(".step")) {
-    //   document.querySelector(".step").className = "categories-link";
-    // }
-    // document.getElementById(menuStore.getState().modal).className = "step";
   }
 
-  render() {
-    // removeEventListener
+   render() {
+    console.log(modalFillNameStore.getState());
+    
     this.root.innerHTML = "";
-
     let html = "";
     html = `
        <div class="content__ingredients" href="1">
@@ -65,22 +47,98 @@ class ModalWindow {
 
        </div>
        <footer>
-           <h2 class="footer-text">Итого: руб
+           <h2 class="footer-text">Итого:${this.#state.sum} руб
            </h2>
        </footer>
    </div>
           `;
 
     this.root.innerHTML = html;
-    new ModalComponent(document.querySelector("#content__ingredients-price"));
+    new ModalComponent(document.querySelector("#content__ingredients-price"), this.contant);
     new FillName(document.querySelector(".categories"));
-    new ResultPrice(document.querySelector(".footer-text"));
+    new ResultPrice(document.querySelector('.footer-text'), this.contant)
     let closeBtn = document.querySelector(".close_modal_window");
     let style = modalOpan.getState().open;
+    let next = document.querySelector(".content__ingredients-button-next");
+    let back = document.querySelector(".content__ingredients-button-next-back");
+    let count = modalFillNameStore.getState().counter;
+
     closeBtn.addEventListener("click", function () {
       modalOpan.dispatch({ type: "close" });
-      modalOpan.dispatch({ type: "counter", payload: 0 });
+      modalOpan.dispatch({ type: "counter", payload: (count = 0) });
       document.getElementById("fon").className = style;
+      document.querySelector('.step').className = 'categories-link'
+    });
+
+    let menu = this.contant.menu2;
+    next.addEventListener("click", function () {
+      modalFillNameStore.dispatch({type: 'counter', payload: count += 1})
+      let fillName =  modalFillNameStore.getState().fillName
+      menuStore.dispatch({ type: fillName[count] })
+      if (document.querySelector(".step")) {
+        document.querySelector(".step").className = "categories-link";
+      } 
+      document.getElementById(menuStore.getState().modal).className = "step";
+       
+      console.log(modalFillNameStore.getState().counter);
+      console.log(modalFillNameStore.getState());
+      console.log(modalFillNameStore.getState().modalBasket);
+      let components = modalFillNameStore.getState().modalBasket.arr;
+      if (menuStore.getState().modal !== "vegetables") {
+        for (let key in components) {
+          if (menu[components[key]]) {
+            if (document.getElementById(`${menu[components[key]].id}`)) {
+              document.getElementById(`${menu[components[key]].id}`).className = "active";
+              
+            }
+          }
+        }
+      } else {
+        let arrVeget = modalFillNameStore.getState().modalBasket.arrVeget;
+        for (let key in arrVeget) {
+          if (menu[arrVeget[key]]) {
+            // if(Array.isArray(components[key])) {
+            if (document.getElementById(`${menu[arrVeget[key]].id}`)) {
+              document.getElementById(`${menu[arrVeget[key]].id}`).className = "active";
+            }
+
+            //   }
+          }
+        }
+      }
+    });
+    back.addEventListener("click", function () {
+      modalFillNameStore.dispatch({type: 'counter', payload: count -= 1})
+     let fillName =  modalFillNameStore.getState().fillName
+      menuStore.dispatch({ type: fillName[count] })
+      if (document.querySelector(".step")) {
+        document.querySelector(".step").className = "categories-link";
+      } 
+      document.getElementById(menuStore.getState().modal).className = "step";
+      console.log(menuStore.getState().modal);
+      console.log(modalFillNameStore.getState().modalBasket);
+      let components = modalFillNameStore.getState().modalBasket.arr;
+      if (menuStore.getState().modal !== "vegetables") {
+        for (let key in components) {
+          if (menu[components[key]]) {
+            if (document.getElementById(`${menu[components[key]].id}`)) {
+              document.getElementById(`${menu[components[key]].id}`).className = "active";
+            }
+          }
+        }
+      } else {
+        let arrVeget = modalFillNameStore.getState().modalBasket.arrVeget;
+        for (let key in arrVeget) {
+          if (menu[arrVeget[key]]) {
+            // if(Array.isArray(components[key])) {
+            if (document.getElementById(`${menu[arrVeget[key]].id}`)) {
+              document.getElementById(`${menu[arrVeget[key]].id}`).className = "active";
+            }
+
+            //   }
+          }
+        }
+      }
     });
   }
 }

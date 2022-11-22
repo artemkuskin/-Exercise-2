@@ -39,19 +39,21 @@ const addModalBasketElem = (state = {}, action) => {
   }
 };
 
-const idReducer = (state = '', action) => {
+const itogSum = (state = 0, action) => {
   switch (action.type) {
-    case 'addId':
+    case 'addSum':
       return (state = action.payload);
     default:
       return state;
   }
 };
 
+
+
 export const modalReducer = combineReducers({
   fillName: modalFillNameReducer,
   open: activeReducer,
   counter: counterCategoryReducer,
   modalBasket: addModalBasketElem,
-  id: idReducer
+  sum: itogSum
 })

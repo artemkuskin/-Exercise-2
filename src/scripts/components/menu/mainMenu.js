@@ -15,15 +15,7 @@ class MainMenu {
 
   constructor(root) {
     this.root = root;
-    this.addListeners();
     this.render();
-  }
-
-  addListeners() {
-    let category = menuStore.getState().menu
-    document.addEventListener("click", function (e) {
-      if (e.target.classList.contains("menu-link")) menuStore.dispatch({ type: e.target.id });
-    });
   }
 
   render() {
@@ -34,6 +26,17 @@ class MainMenu {
         <p class="menu-link"  id="${this.#state.list[category]}">${this.#state.list[category].toUpperCase()}</p>
             `;
         this.root.innerHTML += html;
+      }
+      for (let key in this.#state.list) {
+        let btn = document.querySelector(`#${this.#state.list[key]}`);
+        btn.addEventListener("click", function (e) {
+          menuStore.dispatch({ type: e.target.id });
+          if (document.getElementById(menuStore.getState().menu) && !document.querySelector('.targetCategory')) {
+            document.getElementById(menuStore.getState().menu).className = 'targetCategory'
+          }  else if (document.getElementById(menuStore.getState().menu) && document.querySelector('.targetCategory'))
+          document.querySelector('.targetCategory'). className = 'menu-link'
+          document.getElementById(menuStore.getState().menu).className = 'targetCategory'
+        });
       }
     });
   }

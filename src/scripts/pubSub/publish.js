@@ -1,6 +1,8 @@
+const { burgerMenu } = require("../../api/burgerMenu");
 const pubSub = require("./pubsub");
 module.exports = {
    publishEvent() {
+    
         
         const data = {
         categoryMenu : [
@@ -12,6 +14,7 @@ module.exports = {
             "salads",
             "drinks",
           ],
+          menu: burgerMenu()
          }
 
 

@@ -1,10 +1,9 @@
 const basketImg = require("../../../i/basketImg/basket.png");
-const pubsub = require("../../pubSub/pubsub");
-const { menuStore, addModalBasket, addBasketStore, getMenu, getModalMenu, idStore, modalFillNameStore } = require("../../reduxFile/sore");
-const store = getMenu;
+const { addBasketStore } = require("../../reduxFile/sore");
 
 class Busket {
   root;
+  contant;
   #state = {};
   obj = {};
   sum = 0;
@@ -14,128 +13,43 @@ class Busket {
     this.#state;
   }
 
-  constructor(root) {
+  constructor(root, contant) {
+    this.contant = contant;
     this.root = root;
+
     addBasketStore.subscribe(this.render.bind(this));
 
     this.render();
-    this.addListeners();
-
-   // pubsub.subscribe('adDTo...', this.addBasket)
   }
-
-  addListeners() {
-   // let id = idStore.getState()
-   // let btn = document.querySelector(`#asd${id}`)
-   let id = modalFillNameStore.getState().id
-   let targetElem = document.querySelector(`#button${id}`)
-    //document.addEventListener("click", this.addComponent.bind(this));
-   //document.addEventListener("click", this.deleteElem.bind(this));
-    //document.addEventListener("click", this.addBasket.bind(this));
-  }
-
-  // async addComponent() {
-  //   menu = await store.getState();
-  //   basketArr = addBasketStore.getState();
-  //   basketElem = this.#state;
-  //   //id = idStore.getState();
-  //   let id = modalFillNameStore.getState().id
-
-  //   if (menuStore.getState().menu !== "sandwiches") {
-  //    // console.log(idStore.getState());
-  //     if (document.getElementById("idBasket" + menu[id].id)) {
-  //       for (let key in basketArr.elem) {
-  //         if (basketArr.elem[key].id === menu[id].id) {
-  //           basketArr.elem[key].amount = parseInt(basketArr.elem[key].amount) + parseInt(menu[id].count);
-
-  //           this.text();
-  //         }
-  //       }
-  //     } else {
-  //       basketElem.name = menu[id].name;
-  //       basketElem.amount = parseInt(menu[id].count);
-  //       basketElem.id = menu[id].id;
-  //       basketElem.price = menu[id].price;
-  //       addBasketStore.dispatch({
-  //         type: "addBasket",
-  //         payload: { ...basketElem },
-  //       });
-  //     }
-  //     this.resultSum();
-  //   }
-  // }
-
-  // // { id: ... }
-  // async addBasket(e) {
-  //   let basketModal = modalFillNameStore.getState().modalBasket;
-  //   // 
-  //   const menu = await getModalMenu.getState();
-  //   let menu2 = await store.getState();
-  //   basketElem = this.#state;
-  //   let id = modalFillNameStore.getState().id
-  //   if (e.target.classList.contains("edit-button-modal")) {
-  //     basketElem.name = basketModal.name;
-  //     basketElem.amount = menu2[id].count;
-  //     basketElem.price = basketModal.result;
-  //     basketElem.id = id;
-  //     basketElem.components = {
-  //       size: menu[basketModal.components.sizes]?.name,
-  //       bread: menu[basketModal.components.breads]?.name,
-  //       sauce: menu[basketModal.components.sauces]?.name,
-  //       filling: menu[basketModal.components.fillings]?.name,
-  //       vegetable: menu[basketModal.components.vegetables]?.name,
-  //     };
-  //     addBasketStore.dispatch({
-  //       type: "addBasket",
-  //       payload: { ...basketElem },
-  //     });
-  //     this.render();
-  //     this.resultSum();
-  //   }
-  // }
 
   resultSum() {
-    basketArr = addBasketStore.getState().elem;
+    basketArr = addBasketStore.getState().arr.elem;
     console.log(basketArr, "arr");
     let html = "";
     this.sum = 0;
     for (let key in basketArr) {
       this.sum += parseInt(basketArr[key].price) * basketArr[key].amount;
     }
-
+    console.log(this.sum);
     html = `<span class="all-price">Итого:${this.sum} Руб</span> `;
     document.getElementById("result-sum").innerHTML = html;
     return html;
   }
 
-  // deleteElem(e) {
-  //   const basketArr = addBasketStore.getState().elem;
-  //   id = e.target.id;
-  //   if (e.target.classList.contains("idBasketButton")) {
-  //     document.getElementById("idBasket" + id + "Parent").remove();
-  //     for (let key in basketArr) {
-  //       if (basketArr[key].id === id) basketArr.splice([key], 1);
-  //     }
-  //     console.log(basketArr);
-  //     this.resultSum();
-  //   }
-  // }
-
   basketElem() {
     let html = "";
-    basketArr = addBasketStore.getState();
+    basketArr = addBasketStore.getState().arr;
     for (let key in basketArr.elem) {
       html += ` <div class='basketElem' id='idBasket${basketArr.elem[key].id}Parent'><p class='product-name' id="idBasket${basketArr.elem[key].id}">${basketArr.elem[key].name} - ${basketArr.elem[key].amount}</p>
       <button id="idBasketButton${basketArr.elem[key].id}" class='idBasketButton'>X</button></div>`;
       document.getElementById("counter-text").innerHTML = html;
-
     }
     return html;
   }
 
   render() {
-    const basketArr = addBasketStore.getState();
-    let sum = addBasketStore.getState().sum
+    const basketArr = addBasketStore.getState().arr;
+    let sum = addBasketStore.getState().sum;
     console.log(basketArr);
     this.root.innerHTML = "";
     let html = "";
@@ -161,14 +75,16 @@ class Busket {
     this.root.innerHTML = html;
     this.basketElem();
     for (let key in basketArr.elem) {
-      let deleteBtm = document.querySelector(`#idBasketButton${basketArr.elem[key].id}`)
-      let id = basketArr.elem[key].id
-      deleteBtm.addEventListener('click', function() {
+      let deleteBtm = document.querySelector(`#idBasketButton${basketArr.elem[key].id}`);
+      let id = basketArr.elem[key].id;
+      deleteBtm.addEventListener("click", function () {
         document.getElementById("idBasket" + id + "Parent").remove();
-        if (basketArr.elem[key].id){
-          addBasketStore.dispatch({type: 'deleteElem', payload: key}) 
+        if (basketArr.elem[key].id) {
+          addBasketStore.dispatch({ type: "deleteElem", payload: key });
+          let sum = basketArr.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
+          addBasketStore.dispatch({ type: "addSum", payload: sum });
         }
-      })
+      });
     }
   }
 }

@@ -1,13 +1,12 @@
 const subwayLogo = require("../../../i/img/subway.png");
 const donerLogo = require("../../../i/img/doner.png");
 const chickenLogo = require("../../../i/img/south_fried_chicken.png");
-const { menuStore, getMenu, stepStore, idStore, modalFillNameStore, addBasketStore } = require("../../reduxFile/sore");
-const pubsub = require("../../pubSub/pubsub");
-const menuStore2 = getMenu;
-let activeModal = modalFillNameStore;
+const { menuStore, modalFillNameStore, addBasketStore } = require("../../reduxFile/sore");
+const activeModal = modalFillNameStore;
 
 class Menu {
   root;
+  contant;
 
   #state = {
     category: "",
@@ -22,55 +21,40 @@ class Menu {
     this.render();
   }
 
-  constructor(root) {
+  constructor(root, contant) {
+    this.contant = contant;
     this.root = root;
     this.addListeners();
     this.render();
-    let category = menuStore.getState().menu;
-    menuStore.subscribe(this.render.bind(this));
+    menuStore.subscribe(this.render.bind(this), (this.#state.category = menuStore.getState().menu));
   }
 
   addListeners() {
     document.addEventListener("click", this.increment.bind(this));
     document.addEventListener("click", this.decrement.bind(this));
-
-    // btn.addEventListener('click', function () {
-    //   console.log(menu[]);
-    // })
-
-    // перебираем все продукты (product-* btn), на каждом на кнопку вешаем листенер, который будет в пейлоаде слать инфу о продукте
-
-    // (product-0Button).addEventListener('click', () => {
-    //   setSelectedProductInStore({ id: product.id });
-
-    //   // OR
-
-    //   pubsub.emit('addProductToBasket', { id: product.id })
-    // })
   }
 
-  async increment(e) {
-    const menu = await menuStore2.getState();
+  increment(e) {
+    const menu = this.contant.menu;
     if (e.target.classList.contains("increase")) {
       menu[e.target.id].count += 1;
-      this.#state.amount += 1;
       this.render();
     }
   }
 
-  async decrement(e) {
-    const menu = await menuStore2.getState();
+  decrement(e) {
+    const menu = this.contant.menu;
     if (e.target.classList.contains("decrease")) {
       menu[e.target.id].count -= 1;
-      this.#state.amount -= 1;
+
       this.render();
     }
   }
 
-  async render() {
+  render() {
     this.#state.category = menuStore.getState().menu;
-    const menu = await menuStore2.getState();
-    // let style = activeModal.getState().open;
+    const menu = this.contant.menu;
+    console.log(this.contant, ">>>>>>>");
     this.root.innerHTML = "";
 
     for (let key in menu) {
@@ -112,17 +96,14 @@ class Menu {
     }
     for (let key in menu) {
       let btn = this.root.querySelector(`#button${key}`);
+      let count = modalFillNameStore.getState().counter;
+      let sum
       if (btn) {
-        let menu = await menuStore2.getState();
-        basketArr = addBasketStore.getState();
+        let menu = this.contant.menu;
+        basketArr = addBasketStore.getState().arr;
         basketElem = this.#state.obj;
-        let style = activeModal.getState().open;
-
-        //id = idStore.getState();
         let id = modalFillNameStore.getState().id;
-
         btn.addEventListener("click", async function () {
-          
           if (menuStore.getState().menu !== "sandwiches") {
             modalFillNameStore.dispatch({ type: "addId", payload: key });
             console.log(id);
@@ -148,15 +129,18 @@ class Menu {
                 type: "addBasket",
                 payload: product,
               });
-              
             }
+            sum = basketArr.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
+            addBasketStore.dispatch({type: 'addSum', payload: sum})
             console.log(basketArr);
           } else {
             activeModal.dispatch({ type: "active", payload: menu[key] });
+            menu[key].result = menu[key].price
             activeModal.dispatch({
               type: "basketElem",
               payload: menu[key],
             });
+            modalFillNameStore.dispatch({ type: "counter", payload: (count = 0) });
             menuStore.dispatch({ type: "sizes" });
           }
         });

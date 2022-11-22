@@ -30,9 +30,17 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "fs-js": "^1.0.6",
     "pubsub-js": "^1.9.4",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "util": "^0.12.5",
+    "webpack-define-envs-plugin": "^0.2.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
