@@ -454,7 +454,7 @@
             "name": "ФишБургер",
             "count": 1,
             "id": "16",
-            "description": "Рыбная котлета с сыром и соусом тар-тар",
+            "description": "ТутРыбыНет",
             "image": "fish2.png",
             "price": 120,
             "category": "burgers",

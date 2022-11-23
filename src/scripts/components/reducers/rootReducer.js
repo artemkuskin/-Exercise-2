@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
- function rootReducer(state = 'pizza', action) {
+function rootReducer(state = "pizza", action) {
   switch (action.type) {
     case "sandwiches":
       return (state = action.type);
@@ -21,7 +21,7 @@ import { combineReducers } from "redux";
   }
 }
 
-function modalRootReducer(state = 'sizes', action) {
+function modalRootReducer(state = "sizes", action) {
   switch (action.type) {
     case "sizes":
       return (state = action.type);
@@ -35,11 +35,12 @@ function modalRootReducer(state = 'sizes', action) {
       return (state = action.type);
     case "result":
       return (state = action.type);
-      default: return state
+    default:
+      return state;
   }
 }
 
 export const categoryReducer = combineReducers({
   menu: rootReducer,
-  modal: modalRootReducer
-})
+  modal: modalRootReducer,
+});

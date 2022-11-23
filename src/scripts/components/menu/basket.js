@@ -4,14 +4,9 @@ const { addBasketStore } = require("../../reduxFile/sore");
 class Busket {
   root;
   contant;
-  #state = {};
+
   obj = {};
   sum = 0;
-
-  set state(newState) {
-    this.#state = newState;
-    this.#state;
-  }
 
   constructor(root, contant) {
     this.contant = contant;
@@ -24,13 +19,11 @@ class Busket {
 
   resultSum() {
     basketArr = addBasketStore.getState().arr.elem;
-    console.log(basketArr, "arr");
     let html = "";
     this.sum = 0;
     for (let key in basketArr) {
       this.sum += parseInt(basketArr[key].price) * basketArr[key].amount;
     }
-    console.log(this.sum);
     html = `<span class="all-price">Итого:${this.sum} Руб</span> `;
     document.getElementById("result-sum").innerHTML = html;
     return html;
@@ -50,7 +43,6 @@ class Busket {
   render() {
     const basketArr = addBasketStore.getState().arr;
     let sum = addBasketStore.getState().sum;
-    console.log(basketArr);
     this.root.innerHTML = "";
     let html = "";
 

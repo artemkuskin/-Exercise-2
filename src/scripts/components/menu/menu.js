@@ -13,6 +13,7 @@ class Menu {
     menu: "",
     amount: 1,
     obj: {},
+    id: "",
   };
 
   set state(newState) {
@@ -24,37 +25,13 @@ class Menu {
   constructor(root, contant) {
     this.contant = contant;
     this.root = root;
-    this.addListeners();
     this.render();
     menuStore.subscribe(this.render.bind(this), (this.#state.category = menuStore.getState().menu));
-  }
-
-  addListeners() {
-    document.addEventListener("click", this.increment.bind(this));
-    document.addEventListener("click", this.decrement.bind(this));
-  }
-
-  increment(e) {
-    const menu = this.contant.menu;
-    if (e.target.classList.contains("increase")) {
-      menu[e.target.id].count += 1;
-      this.render();
-    }
-  }
-
-  decrement(e) {
-    const menu = this.contant.menu;
-    if (e.target.classList.contains("decrease")) {
-      menu[e.target.id].count -= 1;
-
-      this.render();
-    }
   }
 
   render() {
     this.#state.category = menuStore.getState().menu;
     const menu = this.contant.menu;
-    console.log(this.contant, ">>>>>>>");
     this.root.innerHTML = "";
 
     for (let key in menu) {
@@ -84,9 +61,9 @@ class Menu {
                       ${menu[key].price}</strong> руб</p> 
                   <p class="item-link-text">КОЛИЧЕСТВО</p>
                   <div id="${key * 1000}">
-                  <button class="increase" id='${key}'> + </button>
+                  <button class="increase" id='inc${key}'> + </button>
                   <input type="number"  value='${menu[key].count}' class="input" readonly>
-                  <button class ="decrease" id='${key}'> - </button>
+                  <button class ="decrease" id='dec${key}'> - </button>
                   
                   </div>
                   <button class="edit-button" id="button${[key]}"> В КОРЗИНУ  </button> 
@@ -95,26 +72,38 @@ class Menu {
       }
     }
     for (let key in menu) {
-      let btn = this.root.querySelector(`#button${key}`);
-      let count = modalFillNameStore.getState().counter;
-      let sum
+      const btn = this.root.querySelector(`#button${key}`);
+      const inc = document.querySelector(`#inc${key}`);
+      const dec = document.querySelector(`#dec${key}`);
+      let sum;
+      if (menuStore.getState().menu !== "sandwiches") {
+        if (inc && dec) {
+          inc.addEventListener("click", function () {
+            menu[key].count += 1;
+            menuStore.dispatch({ type: "updateCount" });
+          });
+          dec.addEventListener("click", function () {
+            menu[key].count -= 1;
+            if (menu[key].count <= 1) {
+              menu[key].count = 1;
+            }
+            menuStore.dispatch({ type: "updateCount" });
+          });
+        }
+      }
       if (btn) {
         let menu = this.contant.menu;
         basketArr = addBasketStore.getState().arr;
         basketElem = this.#state.obj;
-        let id = modalFillNameStore.getState().id;
-        btn.addEventListener("click", async function () {
+        btn.addEventListener("click", function () {
           if (menuStore.getState().menu !== "sandwiches") {
             modalFillNameStore.dispatch({ type: "addId", payload: key });
-            console.log(id);
             if (document.getElementById("idBasket" + menu[key].id)) {
               for (let key2 in basketArr.elem) {
                 if (basketArr.elem[key2].id === menu[key].id) {
                   basketArr.elem[key2].amount = parseInt(basketArr.elem[key2].amount) + parseInt(menu[key].count);
-                  console.log(basketArr);
-                  //this.text();
                   addBasketStore.dispatch({
-                    type: "asd",
+                    type: "updateCount",
                   });
                 }
               }
@@ -131,16 +120,14 @@ class Menu {
               });
             }
             sum = basketArr.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
-            addBasketStore.dispatch({type: 'addSum', payload: sum})
-            console.log(basketArr);
+            addBasketStore.dispatch({ type: "addSum", payload: sum });
           } else {
             activeModal.dispatch({ type: "active", payload: menu[key] });
-            menu[key].result = menu[key].price
+            menu[key].result = menu[key].price;
             activeModal.dispatch({
               type: "basketElem",
               payload: menu[key],
             });
-            modalFillNameStore.dispatch({ type: "counter", payload: (count = 0) });
             menuStore.dispatch({ type: "sizes" });
           }
         });

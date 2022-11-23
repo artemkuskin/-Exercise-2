@@ -1,12 +1,10 @@
-
-
 let subscribers = {};
 
 module.exports = {
   publish(event, data) {
     if (!subscribers[event]) return;
 
-    subscribers[event].forEach(subscriberCallback => subscriberCallback(data));
+    subscribers[event].forEach((subscriberCallback) => subscriberCallback(data));
   },
   subscribe(event, callback) {
     let index;
@@ -20,7 +18,7 @@ module.exports = {
     return {
       unsubscribe() {
         subscribers[event].splice(index, 1);
-      }
+      },
     };
-  }
+  },
 };

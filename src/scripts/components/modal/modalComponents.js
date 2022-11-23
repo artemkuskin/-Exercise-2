@@ -1,5 +1,4 @@
-const { menuStore, modalFillNameStore, getMenu, addBasketStore } = require("../../reduxFile/sore");
-let modalOpan = modalFillNameStore;
+const { menuStore, modalFillNameStore: modalOpen, getMenu, addBasketStore } = require("../../reduxFile/sore");
 class ModalComponent {
   root;
   contant;
@@ -21,34 +20,8 @@ class ModalComponent {
   constructor(root, contant) {
     this.contant = contant;
     this.root = root;
-    this.addListeners();
     this.render();
     menuStore.subscribe(this.render.bind(this));
-  }
-
-  addListeners() {
-    document.addEventListener("click", this.increment.bind(this));
-    document.addEventListener("click", this.decrement.bind(this));
-  }
-
-  increment(e) {
-    let result = this.#state.result;
-    if (e.target.classList.contains("increase")) {
-      if (this.#state.category === "result") {
-        result.count += 1;
-        this.render();
-      }
-    }
-  }
-
-  decrement(e) {
-    let result = this.#state.result;
-    if (e.target.classList.contains("decrease")) {
-      if (this.#state.category === "result") {
-        result.count -= 1;
-        this.render();
-      }
-    }
   }
 
   vegetName() {
@@ -63,37 +36,36 @@ class ModalComponent {
   }
 
   render() {
-    // removeEventListener
-
     this.#state.menu = this.contant.menu2;
+
     this.#state.category = menuStore.getState().modal;
-    this.#state.result = modalFillNameStore.getState().modalBasket;
-    const module = this.#state.menu;
+    this.#state.result = modalOpen.getState().modalBasket;
+    const modal = this.#state.menu;
     const result = this.#state.result;
-    const basketModal = modalFillNameStore.getState().modalBasket;
+    const basketModal = modalOpen.getState().modalBasket;
     const menu = this.contant.menu2;
     const menu2 = this.contant.menu;
     const basketElem = this.#state.obj;
 
     this.root.innerHTML = "";
 
-    for (let key in module) {
+    for (let key in modal) {
       let img =
-        module[key].category && module[key].image
-          ? require(`../../../i/${module[key].category}/${module[key].image}`)
+        modal[key].category && modal[key].image
+          ? require(`../../../i/${modal[key].category}/${modal[key].image}`)
           : "";
 
-      if (this.#state.category === module[key].category && this.#state.category !== "result") {
+      if (this.#state.category === modal[key].category && this.#state.category !== "result") {
         let html = "";
 
         html = `
-    <div class="price-popup" id="${module[key].id}">
+    <div class="price-popup" id="${modal[key].id}">
     <div class="price-boll2">
     <div class="price-boll">
     <img src="${img}"  class="ingredients-small content__ingredients-img" id='img${[key]}'> </div></div>
-    <h4 class="name">${module[key].name}</h4>
-    <a href="#" class="item-description">${module[key].description}  </a>
-    <div class="text-block"><p class="price-text"> ${module[key].price} </p><strong> руб</strong> </div></div>
+    <h4 class="name">${modal[key].name}</h4>
+    <a href="#" class="item-description">${modal[key].description}  </a>
+    <div class="text-block"><p class="price-text"> ${modal[key].price} </p><strong> руб</strong> </div></div>
           `;
 
         this.root.innerHTML += html;
@@ -126,18 +98,37 @@ class ModalComponent {
         <h3 id="name">${result.name}</h3>
         </div>
         <div class='counter'>
-        <button class="increase" id=${result.id}> + </button>
+        <button class="increase" id='inc-modal${result.id}'> + </button>
                   <input type="number"  value='${result.count}' class="input" readonly>
-                  <button class ="decrease" id=${result.id}> - </button> </div>
+                  <button class ="decrease" id='dec-modal${result.id}'> - </button> </div>
         <button class="edit-button-modal" id=${result.id}>В КОРЗИНУ</button></div>
         `;
 
         this.root.innerHTML = html;
-        let btn = document.querySelector(".edit-button-modal");
-        let count = modalFillNameStore.getState().counter;
+        const btn = document.querySelector(".edit-button-modal");
+        const inc = document.querySelector(`#inc-modal${result.id}`);
+        const dec = document.querySelector(`#dec-modal${result.id}`);
+        if (inc && dec) {
+          inc.addEventListener("click", function () {
+            if (menuStore.getState().modal === "result") {
+              result.count += 1;
+              menuStore.dispatch({ type: "updateCount" });
+            }
+          });
+          dec.addEventListener("click", function () {
+            if (menuStore.getState().modal === "result") {
+              result.count -= 1;
+              if (result.count <= 1) {
+                result.count = 1;
+              }
+            }
+            menuStore.dispatch({ type: "updateCount" });
+          });
+        }
+
         btn.addEventListener("click", function (e) {
           basketElem.name = basketModal.name;
-          basketElem.amount = menu2[e.target.id].count;
+          basketElem.amount = modalOpen.getState().modalBasket.count;
           basketElem.price = basketModal.result;
           basketElem.id = menu2[e.target.id].id;
           basketElem.components = {
@@ -155,9 +146,8 @@ class ModalComponent {
           let sum = basketArr.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
 
           addBasketStore.dispatch({ type: "addSum", payload: sum });
-          modalOpan.dispatch({ type: "close" });
-          document.querySelector(".step").className = "categories-link";
-          //document.getElementById('sizes').className = 'step'
+          modalOpen.dispatch({ type: "close" });
+          modalOpen.dispatch({ type: "counter", payload: 0 });
         });
       }
     }
@@ -165,35 +155,39 @@ class ModalComponent {
     let arr = [];
     let resultArr = [];
 
-    for (let key in module) {
+    for (let key in modal) {
       let imgBtn = document.querySelector(`#img${key}`);
-
+      
       if (imgBtn) {
         imgBtn.addEventListener("click", function () {
-          let basket = modalFillNameStore.getState().modalBasket;
-          if (module[key].category !== "vegetables") {
-            if (!document.querySelector(".active")) {
-              document.getElementById(module[key].id).className = "active";
-            } else if (document.querySelector(".active")) {
-              document.querySelector(".active").className = "price-popup";
-              document.getElementById(module[key].id).className = "active";
+          let basket = modalOpen.getState().modalBasket;
+          let price = modalOpen.getState().modalBasket.price;
+          let price2 = 0;
+          let sum = 0;
+          if (document.getElementById(modal[key].id).className === 'price-popup') {
+          if (modal[key].category !== "vegetables") {
+             if (!document.querySelector(".active")) {
+              document.getElementById(modal[key].id).className = "active";
+             } else if (document.querySelector(".active")) {
+               document.querySelector(".active").className = "price-popup";
+                document.getElementById(modal[key].id).className = "active";
             }
           } else {
-            document.getElementById(module[key].id).className = "active";
+            document.getElementById(modal[key].id).className = "active";
           }
-          if (module[key].category === "sizes") {
+          if (modal[key].category === "sizes") {
             basket.components.sizes = key;
-          } else if (module[key].category === "breads") {
+          } else if (modal[key].category === "breads") {
             basket.components.breads = key;
-          } else if (module[key].category === "vegetables") {
+          } else if (modal[key].category === "vegetables") {
             arr.push(key);
             basket.components.vegetables = Array.from(new Set(arr));
-          } else if (module[key].category === "sauces") {
+          } else if (modal[key].category === "sauces") {
             basket.components.sauces = key;
-          } else if (module[key].category === "fillings") {
+          } else if (modal[key].category === "fillings") {
             basket.components.fillings = key;
           }
-          console.log(modalFillNameStore.getState());
+          console.log(modalOpen.getState());
           resultArr = [
             basket.components.sizes,
             basket.components.breads,
@@ -205,18 +199,49 @@ class ModalComponent {
           basket.arr = resultArr;
           basket.arrVeget = vegetArr;
 
-          let price = modalFillNameStore.getState().modalBasket.price;
-          let price2 = 0;
-          let sum = 0;
-          for (let key in modalFillNameStore.getState().modalBasket.arr) {
-            if (modalFillNameStore.getState().modalBasket.arr[key]) {
-              price2 = +price2 + menu[modalFillNameStore.getState().modalBasket.arr[key]].price;
-            }
+        } else {
+          let arrElem = []
+          document.getElementById(modal[key].id).className = "price-popup";
+
+          // for (const category in basket.components) {
+          //   if (Array.isArray(basket.components[category])) {
+          //     basket.components[category] = [];
+          //   } else {
+          //     basket.components[category] = "";
+          //   }
+          // }
+
+          // basket.components[modal[key].category] = Array.isArray(basket.components[modal[key].category]) ? [] : "";
+
+          if (modal[key].category === "sizes") {
+            basket.components.sizes = '';
+          } else if (modal[key].category === "breads") {
+            basket.components.breads = '';
+          } else if (modal[key].category === "vegetables") {
+            arr.push(key);
+            basket.components.vegetables = Array.from(new Set(arr));
+          } else if (modal[key].category === "sauces") {
+            basket.components.sauces = '';
+          } else if (modal[key].category === "fillings") {
+            basket.components.fillings = '';
           }
-          sum = price + price2;
-          basket.result = sum;
-          console.log(sum);
-          modalFillNameStore.dispatch({ type: "basketElem", payload: basket });
+          arrElem = [
+            basket.components.sizes,
+            basket.components.breads,
+            basket.components.sauces,
+            basket.components.fillings,
+          ];
+          console.log(basket);
+          basket.arr = arrElem
+        }
+        for (let key in modalOpen.getState().modalBasket.arr) {
+          if (modalOpen.getState().modalBasket.arr[key]) {
+            price2 = +price2 + menu[modalOpen.getState().modalBasket.arr[key]].price;
+          }
+        }
+        sum = price + price2;
+        basket.result = sum;
+        modalOpen.dispatch({ type: "basketElem", payload: basket });
         });
       }
     }

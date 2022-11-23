@@ -34,13 +34,11 @@ body {
 }
 
 .targetCategory {
-    height: 20px;
-    width: 183px;
-    padding: 10px 9px;
-    color: black;
-    text-decoration: none;
+    width: 183;
     cursor: pointer;
-    background-color: rgb(214, 55, 55);
+    border-radius: 10px;
+    background-color: rgba(85, 255, 0, 0.774);
+    box-shadow: 0px 0px 9px -3px;
 }
 
 .menu-link:hover {

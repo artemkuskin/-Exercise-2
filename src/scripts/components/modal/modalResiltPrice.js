@@ -18,19 +18,17 @@ class ResultPrice {
   constructor(root, contant) {
     this.contant = contant;
     this.root = root;
-    modalFillNameStore.subscribe(this.render.bind(this));
+    modalFillNameStore.subscribe(() => {
+      this.render();
+    });
     this.render();
   }
-
-
 
   render() {
     const price = modalFillNameStore.getState().modalBasket.result;
     let activeModal = modalFillNameStore;
     let style = activeModal.getState().open;
     document.getElementById("fon").className = style;
-   
-  
 
     // removeEventListener
     this.root.innerHTML = "";
