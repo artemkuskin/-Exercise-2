@@ -69,8 +69,6 @@ class ModalWindow {
       // count
       modalOpen.dispatch({ type: "close" });
       modalOpen.dispatch({ type: "counter", payload: (count = 0) });
-      document.getElementById("fon").className = style;
-      // document.querySelector(".step").className = "categories-link";
     });
 
     next.addEventListener("click", function () {
@@ -81,28 +79,6 @@ class ModalWindow {
       modalOpen.dispatch({ type: "counter", payload: (count += 1) });
       let fillName = modalOpen.getState().fillName;
       menuStore.dispatch({ type: fillName[count] });
-      let components = modalOpen.getState().modalBasket.arr;
-      if (menuStore.getState().modal !== "vegetables") {
-        for (let key in components) {
-          if (menu[components[key]]) {
-            if (document.getElementById(`${menu[components[key]].id}`)) {
-              document.getElementById(`${menu[components[key]].id}`).className = "active";
-            }
-          }
-        }
-      } else {
-        let arrVeget = modalOpen.getState().modalBasket.arrVeget;
-        for (let key in arrVeget) {
-          if (menu[arrVeget[key]]) {
-            // if(Array.isArray(components[key])) {
-            if (document.getElementById(`${menu[arrVeget[key]].id}`)) {
-              document.getElementById(`${menu[arrVeget[key]].id}`).className = "active";
-            }
-
-            //   }
-          }
-        }
-      }
     });
     back.addEventListener("click", function () {
       let count = modalOpen.getState().counter;
@@ -112,28 +88,6 @@ class ModalWindow {
       modalOpen.dispatch({ type: "counter", payload: (count -= 1) });
       let fillName = modalOpen.getState().fillName;
       menuStore.dispatch({ type: fillName[count] });
-      let components = modalOpen.getState().modalBasket.arr;
-      if (menuStore.getState().modal !== "vegetables") {
-        for (let key in components) {
-          if (menu[components[key]]) {
-            if (document.getElementById(`${menu[components[key]].id}`)) {
-              document.getElementById(`${menu[components[key]].id}`).className = "active";
-            }
-          }
-        }
-      } else {
-        let arrVeget = modalOpen.getState().modalBasket.arrVeget;
-        for (let key in arrVeget) {
-          if (menu[arrVeget[key]]) {
-            // if(Array.isArray(components[key])) {
-            if (document.getElementById(`${menu[arrVeget[key]].id}`)) {
-              document.getElementById(`${menu[arrVeget[key]].id}`).className = "active";
-            }
-
-            //   }
-          }
-        }
-      }
     });
   }
 }

@@ -22,9 +22,6 @@ class MainMenu {
   }
 
   render() {
-    // pubsub.subscribe("category", (data) => {
-
-    //console.log('asdasdasdasdsadsadas');
     this.root.innerHTML = "";
     for (category in this.#state.list) {
       const html = `
@@ -40,7 +37,6 @@ class MainMenu {
         menuStore.dispatch({ type: e.target.id });
       });
     }
-    // });
   }
 }
 

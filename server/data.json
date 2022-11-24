@@ -16,7 +16,7 @@
             "components": {
                 "size": "1x",
                 "bread": "whit-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -35,7 +35,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -54,7 +54,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -73,7 +73,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -92,7 +92,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -111,7 +111,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -130,7 +130,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -149,7 +149,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -168,7 +168,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -187,7 +187,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -206,7 +206,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -225,7 +225,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -244,7 +244,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }
@@ -263,7 +263,7 @@
             "components": {
                 "size": "1x",
                 "bread": "white-italian",
-                "vegetable": [],
+                "vegetables": [28],
                 "sauce": [],
                 "filling": []
             }

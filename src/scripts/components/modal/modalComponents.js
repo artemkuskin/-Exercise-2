@@ -22,6 +22,9 @@ class ModalComponent {
     this.root = root;
     this.render();
     menuStore.subscribe(this.render.bind(this));
+    modalOpen.subscribe(() => {
+      this.render();
+    });
   }
 
   vegetName() {
@@ -46,20 +49,27 @@ class ModalComponent {
     const menu = this.contant.menu2;
     const menu2 = this.contant.menu;
     const basketElem = this.#state.obj;
-
+    let modalElem = modalOpen.getState().modalBasket.components;
     this.root.innerHTML = "";
 
     for (let key in modal) {
       let img =
-        modal[key].category && modal[key].image
-          ? require(`../../../i/${modal[key].category}/${modal[key].image}`)
-          : "";
+        modal[key].category && modal[key].image ? require(`../../../i/${modal[key].category}/${modal[key].image}`) : "";
 
       if (this.#state.category === modal[key].category && this.#state.category !== "result") {
         let html = "";
 
+        const category = modal[key].category;
+        const id = key;
+
+        const isActive = modalElem
+          ? Array.isArray(modalElem[category])
+            ? modalElem[category].includes(id)
+            : modalElem[category] == id
+          : false;
+
         html = `
-    <div class="price-popup" id="${modal[key].id}">
+    <div class="price-popup ${isActive ? "active" : ""}" id="${modal[key].id}">
     <div class="price-boll2">
     <div class="price-boll">
     <img src="${img}"  class="ingredients-small content__ingredients-img" id='img${[key]}'> </div></div>
@@ -68,6 +78,7 @@ class ModalComponent {
     <div class="text-block"><p class="price-text"> ${modal[key].price} </p><strong> руб</strong> </div></div>
           `;
 
+        // }
         this.root.innerHTML += html;
       } else if (this.#state.category === "result") {
         let resultImg = result.category && result.image ? require(`../../../i/${result.category}/${result.image}`) : "";
@@ -136,7 +147,7 @@ class ModalComponent {
             bread: menu[basketModal.components.breads]?.name,
             sauce: menu[basketModal.components.sauces]?.name,
             filling: menu[basketModal.components.fillings]?.name,
-            vegetable: menu[basketModal.components.vegetables]?.name,
+            vegetables: menu[basketModal.components.vegetables]?.name,
           };
           addBasketStore.dispatch({
             type: "addBasket",
@@ -144,7 +155,6 @@ class ModalComponent {
           });
           let basketArr = addBasketStore.getState().arr;
           let sum = basketArr.elem.reduce((prev, curr) => prev + curr.price * curr.amount, 0);
-
           addBasketStore.dispatch({ type: "addSum", payload: sum });
           modalOpen.dispatch({ type: "close" });
           modalOpen.dispatch({ type: "counter", payload: 0 });
@@ -152,40 +162,48 @@ class ModalComponent {
       }
     }
 
-    let arr = [];
     let resultArr = [];
 
     for (let key in modal) {
       let imgBtn = document.querySelector(`#img${key}`);
-      
+
       if (imgBtn) {
         imgBtn.addEventListener("click", function () {
           let basket = modalOpen.getState().modalBasket;
           let price = modalOpen.getState().modalBasket.price;
           let price2 = 0;
           let sum = 0;
-          if (document.getElementById(modal[key].id).className === 'price-popup') {
-          if (modal[key].category !== "vegetables") {
-             if (!document.querySelector(".active")) {
-              document.getElementById(modal[key].id).className = "active";
-             } else if (document.querySelector(".active")) {
-               document.querySelector(".active").className = "price-popup";
-                document.getElementById(modal[key].id).className = "active";
-            }
-          } else {
-            document.getElementById(modal[key].id).className = "active";
-          }
           if (modal[key].category === "sizes") {
-            basket.components.sizes = key;
+            if (!basket.components.sizes) {
+              basket.components.sizes = key;
+            } else {
+              basket.components.sizes = "";
+            }
           } else if (modal[key].category === "breads") {
-            basket.components.breads = key;
+            if (!basket.components.breads) {
+              basket.components.breads = key;
+            } else {
+              basket.components.breads = "";
+            }
           } else if (modal[key].category === "vegetables") {
-            arr.push(key);
-            basket.components.vegetables = Array.from(new Set(arr));
+            if (basket.components.vegetables.length <= 3) {
+              basket.components.vegetables.push(key);
+              basket.components.vegetables = Array.from(new Set(basket.components.vegetables));
+            } else {
+              basket.components.vegetables.splice(0, 1);
+            }
           } else if (modal[key].category === "sauces") {
-            basket.components.sauces = key;
+            if (!basket.components.sauces) {
+              basket.components.sauces = key;
+            } else {
+              basket.components.sauces = "";
+            }
           } else if (modal[key].category === "fillings") {
-            basket.components.fillings = key;
+            if (!basket.components.fillings) {
+              basket.components.fillings = key;
+            } else {
+              basket.components.fillings = "";
+            }
           }
           console.log(modalOpen.getState());
           resultArr = [
@@ -199,49 +217,14 @@ class ModalComponent {
           basket.arr = resultArr;
           basket.arrVeget = vegetArr;
 
-        } else {
-          let arrElem = []
-          document.getElementById(modal[key].id).className = "price-popup";
-
-          // for (const category in basket.components) {
-          //   if (Array.isArray(basket.components[category])) {
-          //     basket.components[category] = [];
-          //   } else {
-          //     basket.components[category] = "";
-          //   }
-          // }
-
-          // basket.components[modal[key].category] = Array.isArray(basket.components[modal[key].category]) ? [] : "";
-
-          if (modal[key].category === "sizes") {
-            basket.components.sizes = '';
-          } else if (modal[key].category === "breads") {
-            basket.components.breads = '';
-          } else if (modal[key].category === "vegetables") {
-            arr.push(key);
-            basket.components.vegetables = Array.from(new Set(arr));
-          } else if (modal[key].category === "sauces") {
-            basket.components.sauces = '';
-          } else if (modal[key].category === "fillings") {
-            basket.components.fillings = '';
+          for (let key in modalOpen.getState().modalBasket.arr) {
+            if (modalOpen.getState().modalBasket.arr[key]) {
+              price2 = +price2 + menu[modalOpen.getState().modalBasket.arr[key]].price;
+            }
           }
-          arrElem = [
-            basket.components.sizes,
-            basket.components.breads,
-            basket.components.sauces,
-            basket.components.fillings,
-          ];
-          console.log(basket);
-          basket.arr = arrElem
-        }
-        for (let key in modalOpen.getState().modalBasket.arr) {
-          if (modalOpen.getState().modalBasket.arr[key]) {
-            price2 = +price2 + menu[modalOpen.getState().modalBasket.arr[key]].price;
-          }
-        }
-        sum = price + price2;
-        basket.result = sum;
-        modalOpen.dispatch({ type: "basketElem", payload: basket });
+          sum = price + price2;
+          basket.result = sum;
+          modalOpen.dispatch({ type: "basketElem", payload: basket });
         });
       }
     }

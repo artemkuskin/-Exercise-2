@@ -14,9 +14,9 @@ const activeReducer = (state = "fon", action) => {
   switch (action.type) {
     case "active":
       console.log(action);
-      return (state = "modalActive");
+      return (state = document.getElementById("fon").className = "modalActive");
     case "close":
-      return (state = "fon");
+      return (state = document.getElementById("fon").className = 'fon');
     default:
       return state;
   }
